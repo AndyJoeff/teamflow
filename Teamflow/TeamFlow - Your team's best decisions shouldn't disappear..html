@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>TeamFlow - Your team's best decisions shouldn't disappear.</title>
+    <meta name="description" content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence. Built for modern product teams.">
+    <meta name="keywords" content="SaaS, decision tracking, context preservation, product teams, alignment, knowledge management">
+    <meta name="author" content="TeamFlow Inc.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.teamflow.com/">
+    <meta property="og:title" content="TeamFlow - Your team's best decisions shouldn't disappear.">
+    <meta property="og:description" content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.">
+    <meta property="og:image" content="https://www.teamflow.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.teamflow.com/">
+    <meta property="twitter:title" content="TeamFlow - Your team's best decisions shouldn't disappear.">
+    <meta property="twitter:description" content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.">
+    <meta property="twitter:image" content="https://www.teamflow.com/assets/og-image.png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                     fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#6D4AFF',
+                            hover: '#5535E6',
+                            light: '#F1EEFF',
+                             50: '#EEF2FF',
+                            100: '#E0E7FF',
+                            500: '#6366F1',
+                            600: '#4F46E5',
+                            700: '#4338CA',
+                            900: '#312E81',
+                        },
+                        dark: {
+                            DEFAULT: '#0E1023',
+                            muted: '#5B6170',
+                            navy: '#05031A',
+                        },
+                        borderLight: '#E7E8EE',
+                        bgLight: '#F8F8FC',
+                    },
+                    boxShadow: {
+                        'soft-button': '0 4px 14px 0 rgba(109, 74, 255, 0.22)',
+                        'nav-shadow': '0 10px 30px -10px rgba(15, 11, 46, 0.04)',
+                        'product-shadow': '0 40px 80px -15px rgba(15, 11, 46, 0.15), 0 0 0 1px rgba(15, 11, 46, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styling (Variables & Clean Animations) -->
+    <style>
+        :root {
+            --color-brand: #6D4AFF;
+            --color-brand-hover: #5535E6;
+            --color-dark: #0E1023;
+            --color-dark-muted: #5B6170;
+            --color-border-light: #E7E8EE;
+            --color-bg-light: #F8F8FC;
+        }
+
+        /* Prevent layout shift during mobile menu transitions */
+        .mobile-menu-enter {
+            max-height: 0px;
+            opacity: 0;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s linear;
+        }
+
+        .mobile-menu-active {
+            max-height: 480px;
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body class="font-sans text-dark antialiased min-h-screen">
+
+    <!-- STICKY NAVIGATION HEADER (Borderless Style to match screenshot) -->
+    <header id="main-header" class="sticky top-0 z-50 w-full bg-transparent transition-all duration-300">
+        <div class="mx-auto max-w-7xl px-6 sm:px-8">
+            <div class="flex h-20 items-center justify-between">
+                
+                <!-- Logo Zone -->
+                <div class="flex flex-shrink-0 items-center">
+                    <a href="#" class="flex items-center gap-2.5 group" aria-label="TeamFlow Home">
+                        <svg class="h-8 w-8 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="32" height="32" rx="8" fill="#6D4AFF"/>
+                            <path d="M12 10C10.8954 10 10 10.8954 10 12V20C10 21.1046 10.8954 22 12 22H20C21.1046 22 22 21.1046 22 20V12C22 10.8954 21.1046 10 20 10H12ZM14.5 13.5H17.5V15.5H14.5V13.5ZM14.5 16.5H17.5V18.5H14.5V16.5Z" fill="white"/>
+                        </svg>
+                        <span class="text-[21px] font-extrabold tracking-tight text-dark">TeamFlow</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation Links (Centered, Borderless style) -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Global navigation">
+                    <a href="#" class="rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200">Product</a>
+                    
+                    <!-- Solutions Dropdown -->
+                    <div class="relative group">
+                        <button type="button" class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none" aria-expanded="false">
+                            <span>Solutions</span>
+                            <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Product Teams</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Engineering Teams</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Design Teams</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Startups</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200">Pricing</a>
+
+                    <!-- Resources Dropdown -->
+                    <div class="relative group">
+                        <button type="button" class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none" aria-expanded="false">
+                            <span>Resources</span>
+                            <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Blog</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Guides</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Templates</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Help Center</a>
+                        </div>
+                    </div>
+
+                    <!-- Company Dropdown -->
+                    <div class="relative group">
+                        <button type="button" class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none" aria-expanded="false">
+                            <span>Company</span>
+                            <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">About Us</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Careers</a>
+                            <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Privacy Policy</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Action CTA Zone (Right) -->
+                <div class="hidden md:flex items-center gap-5">
+                    <a href="#" class="text-[15px] font-semibold text-dark hover:text-brand transition-colors duration-200">Log in</a>
+                    <a href="#" class="inline-flex h-11 items-center justify-center rounded-lg bg-brand px-5 text-[15px] font-bold text-white shadow-soft-button hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+                        Start free
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Toggle Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-toggle" type="button" class="inline-flex items-center justify-center rounded-lg p-2 text-dark-muted hover:bg-bgLight hover:text-dark focus:outline-none" aria-controls="mobile-navigation" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <div class="relative h-6 w-6">
+                            <span id="hamburger-top" class="absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out" style="top: 3px;"></span>
+                            <span id="hamburger-mid" class="absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out" style="top: 11px;"></span>
+                            <span id="hamburger-bot" class="absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out" style="top: 19px;"></span>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <nav id="mobile-navigation" class="mobile-menu-enter md:hidden overflow-hidden bg-white" aria-label="Mobile navigation">
+            <div class="space-y-1.5 px-6 pb-6 pt-4 border-t border-borderLight/40">
+                <a href="#" class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Product</a>
+                <a href="#" class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Solutions</a>
+                <a href="#" class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Pricing</a>
+                <a href="#" class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Resources</a>
+                <a href="#" class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Company</a>
+                
+                <div class="my-4 border-t border-borderLight/80"></div>
+                
+                <div class="grid grid-cols-1 gap-3">
+                    <a href="#" class="flex h-11 items-center justify-center rounded-lg border border-borderLight text-base font-semibold text-dark hover:bg-bgLight transition-colors duration-200">
+                        Log in
+                    </a>
+                    <a href="#" class="flex h-11 items-center justify-center rounded-lg bg-brand text-base font-semibold text-white shadow-soft-button hover:bg-brand-hover transition-all duration-200">
+                        Start free
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN APP CONTENT -->
+    <main>
+        
+        <!-- HERO SECTION -->
+        <section class="relative overflow-hidden pt-12 pb-24 sm:pb-32 lg:pt-[50px] lg:pb-[140px]">
+            
+            <!-- Glow under the mockup matching desktop layout perfectly -->
+            <div class="absolute right-0 top-1/4 -z-10 h-[700px] w-[700px] rounded-full bg-[#E8E6FC]/60 blur-[130px] pointer-events-none"></div>
+            <div class="absolute left-10 top-1/3 -z-10 h-[400px] w-[400px] rounded-full bg-brand/5 blur-[100px] pointer-events-none"></div>
+
+            <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+                <!-- Balanced 2-Column layout: Left content 45% / Right content 55% on desktop -->
+                <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
+                    
+                    <!-- Left Content Column (45% Width on Desktop) -->
+                    <div class="w-full lg:w-[45%] flex flex-col justify-center text-left">
+                        
+                        <!-- Eyebrow Badge Pill -->
+                          <div class="self-start inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-50 border border-brand-100 mb-4 shadow-sm">
+                        <!-- Tiny shield/lock SVG -->
+                        <svg class="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <span class="text-xs font-semibold text-brand-700 tracking-wide font-heading">Built for product teams</span>
+                    </div>
+
+                        <!-- Headline (Matching ChatGPT Image font weights & scale) -->
+                        <h1 class="text-[44px] sm:text-[54px] lg:text-[54px] font-bold leading-[1.14] tracking-[-0.035em] text-dark mb-6">
+                            Your team's best decisions shouldn't <span class="text-[#6D4AFF]">disappear.</span>
+                        </h1>
+
+                        <!-- Supporting Text (Max-width 480px) -->
+                        <p class="max-w-[480px] text-lg sm:text-base leading-[1.62] text-dark-muted mb-8 font-medium">
+                            TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.
+                        </p>
+
+                        <!-- CTA Row: Desktop = Horizontal, Mobile = Stacked -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8">
+                            <!-- Primary Start Free Button (56px/h-14 Height) -->
+                            <a href="#" class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-brand px-7 text-sm font-semibold text-white shadow-soft-button hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 transition-all duration-200">
+                                Start free
+                                <svg class="h-4 w-4 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </a>
+                            <!-- Secondary Watch Demo Button (56px/h-14 Height) -->
+                            <button type="button" class="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-borderLight bg-white px-7 text-sm font-semibold text-dark hover:bg-bgLight hover:border-dark-muted/30 focus:outline-none focus:ring-2 focus:ring-dark-muted/35 transition-all duration-200">
+                                Watch demo
+                                  <svg class="h-5 w-5 text-dark-muted" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Trust Row (Subtle features under CTAs) -->
+                     <div class="flex flex-wrap-reverse items-center gap-y-3.5 gap-x-6 text-slate-700 text-sm">
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
+                    </svg>
+                    <span>Free 14-day trial</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
+                    </svg>
+                    <span>No credit card</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
+                    </svg>
+                    <span>Cancel anytime</span>
+                </div>
+            </div>
+
+                    </div>
+
+                    <!-- Right Product Mockup Area (55% Width on Desktop) -->
+                    <div class="w-full lg:w-[55%] relative">
+                        <!-- Neon Purple Glow behind the mockup matching high-end product layouts -->
+                        <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-brand/15 to-purple-500/10 blur-3xl -z-10"></div>
+                        
+                        <!-- Main Interactive/App-styled Container Frame -->
+                        <div class="relative w-full rounded-2xl bg-[#E7E8EE]/30 shadow-product-shadow backdrop-blur-sm">
+                            
+                            <!-- Internal Web Browser/App Window Header Mockup -->
+                            <div class="rounded-t-xl bg-[#F8F8FC]/90 border-b border-borderLight px-4 py-3.5 flex items-center justify-between">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="h-2 w-2 rounded-full bg-[#FF5F56]"></span>
+                                    <span class="h-2 w-2 rounded-full bg-[#FFBD2E]"></span>
+                                    <span class="h-2 w-2 rounded-full bg-[#27C93F]"></span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <!-- Back / Forward Buttons -->
+                                    <span class="h-5 w-5 rounded bg-white border border-borderLight flex items-center justify-center shadow-sm">
+                                        <svg class="h-3 w-3 text-dark-muted" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    </span>
+                                    <span class="h-5 w-5 rounded bg-white border border-borderLight flex items-center justify-center shadow-sm opacity-50">
+                                        <svg class="h-3 w-3 text-dark-muted" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Image Container holding actual production preview -->
+                            <div class="rounded-b-xl overflow-hidden bg-white">
+                                <img src="hero_dashboard.png" alt="TeamFlow Dashboard - Real-time decision records timeline and connected reasoning context" class="w-full h-auto object-cover block" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=1200&amp;q=80';">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+           <!-- The Problem Section (Nestled inside a deeper Mockup color block parent for beautiful mobile curve transparency) -->
+    <div class="bg-[#EFF3F8]">
+        <section class="relative bg-[#F8FAFC] py-20 lg:py-[100px] rounded-tr-[48px] lg:rounded-none overflow-hidden">
+            
+            <!-- Max width 1280px Container -->
+            <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+                
+                <!-- Section Header (Centered, showing the cost of lost organizational context) -->
+                <div class="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
+                    <!-- Soft Purple Category Label -->
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600 block mb-3 font-heading">
+                        THE PROBLEM
+                    </span>
+                    
+                    <!-- Main Header -->
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight leading-tight">
+                        The context behind your work is disappearing.
+                    </h2>
+                    
+                    <!-- Supporting Subheading -->
+                    <p class="mt-4 text-base sm:text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto">
+                        Important decisions are scattered across tools, threads, and docs.<br> Months later, nobody remembers why.
+                    </p>
+                </div>
+                <div class="mx-auto max-w-6xl">
+                <!-- Cards Grid: Desktop 3 columns, Mobile 1 column -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    
+                    <!-- Card 1: Repeated Discussions -->
+                    <div class="bg-white p-4 sm:p-6 rounded-[12px] border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_-4px_rgba(99,102,241,0.08)] hover:-translate-y-1.5 transition-all duration-300 group">
+                        <div class="flex items-center gap-5 sm:gap-6">
+                            <!-- Icon Container: Message Bubble (Repeated Discussions) - Bigger & Horizontally Aligned -->
+                            <div class="w-14 h-14 rounded-full bg-brand-50 text-purple-600 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <!-- Card Title & Description -->
+                            <div>
+                                <h3 class="font-semibold text-lg text-navy-900 tracking-tight">
+                                    Repeated Discussions
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-500 leading-relaxed">
+                                    Teams revisit decisions because nobody remembers why they were made.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Slow Onboarding -->
+                    <div class="bg-white p-4 sm:p-6 rounded-[12px] border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_-4px_rgba(99,102,241,0.08)] hover:-translate-y-1.5 transition-all duration-300 group">
+                        <div class="flex items-center gap-5 sm:gap-6">
+                            <!-- Icon Container: Multi-User / Group (Slow Onboarding) - Bigger & Horizontally Aligned -->
+                            <div class="w-14 h-14 rounded-full bg-indigo-50 text-purple-600 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <!-- Card Title & Description -->
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-navy-900 tracking-tight">
+                                    Slow Onboarding
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-500 leading-relaxed">
+                                    New hires spend weeks digging through old docs and threads to understand the why.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Knowledge Loss -->
+                    <div class="bg-white p-4 sm:p-6 rounded-[12px] border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_-4px_rgba(99,102,241,0.08)] hover:-translate-y-1.5 transition-all duration-300 group">
+                        <div class="flex items-center gap-5 sm:gap-6">
+                            <!-- Icon Container: Shield Lock (Knowledge Loss) - Bigger & Horizontally Aligned -->
+                            <div class="w-14 h-14 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <!-- Card Title & Description -->
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-navy-900 tracking-tight">
+                                    Knowledge Loss
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-500 leading-relaxed">
+                                    Critical understanding leaves when employees leave the company.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Category Positioning Section (The Shift) -->
+    <section class="relative bg-white py-16 lg:py-24 overflow-hidden border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600 block mb-3 font-heading">
+                    THE SHIFT
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[40px] lg:leading-[1.15] text-navy-900 tracking-tight">
+                    Most tools track work.<br class="sm:hidden"> TeamFlow tracks the thinking.
+                </h2>
+            </div>
+
+            <!-- Main Diagram / Comparison Layout -->
+            <div class="relative grid grid-cols-1 lg:grid-cols-2 lg:gap-16 items-stretch">
+                
+                <!-- Vertical Divider (Desktop) -->
+                <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-slate-100 -translate-x-1/2"></div>
+                
+                <!-- Desktop VS Badge (Centered vertically and horizontally on desktop) -->
+                <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-slate-200 text-slate-500 font-heading font-semibold text-xs items-center justify-center uppercase shadow-sm select-none">
+                    vs.
+                </div>
+
+                <!-- LEFT PANEL: Traditional Workflow -->
+                <div class="flex flex-col items-center justify-between p-4 relative bg-white">
+                    <div class="w-full flex flex-col items-center">
+                        <span class="text-xs font-bold tracking-[0.15em] text-navy-900 uppercase mb-6 font-heading">Traditional workflow</span>
+                        
+                        <!-- Horizontal Flow Diagram Elements (Exactly 3 items) -->
+                        <div class="flex items-center justify-center gap-4 w-full">
+                            
+                            <!-- Slack Icon box -->
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-3 hover:shadow-md transition-shadow">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/250px-Slack_icon_2019.svg.png" alt="Slack" class="w-full h-full object-contain">
+                            </div>
+
+                            <!-- Connecting dot structure -->
+                            <div class="h-[1px] flex-1 max-w-[32px] bg-slate-300 relative flex items-center justify-center">
+                                <span class="w-2 h-2 rounded-full bg-slate-600"></span>
+                            </div>
+
+                            <!-- Notion Icon box -->
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-3 hover:shadow-md transition-shadow">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/120px-Notion-logo.svg.png" alt="Notion" class="w-full h-full object-contain">
+                            </div>
+
+                            <!-- Connecting dot structure -->
+                            <div class="h-[1px] flex-1 max-w-[32px] bg-slate-300 relative flex items-center justify-center">
+                                <span class="w-2 h-2 rounded-full bg-slate-600"></span>
+                            </div>
+
+                            <!-- Google Drive Icon box -->
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-3 hover:shadow-md transition-shadow">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/960px-Google_Drive_icon_(2020).svg.png" alt="Google Drive" class="w-full h-full object-contain">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Vertical line down to lost state -->
+                    <div class="flex flex-col items-center mt-6 w-full">
+                        <div class="w-[1px] h-8 bg-slate-500"></div>
+                        
+                        <!-- Final state card -->
+                        <div class="mt-3 flex flex-col items-center">
+                            <div class="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white shadow-md shadow-red-500/10 mb-2">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                            <span class="font-heading font-extrabold text-sm text-slate-900 tracking-wide uppercase">Context gets lost</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile VS Separator Line (Only visible on mobile) -->
+                <div class="lg:hidden relative my-3 w-full flex items-center justify-center">
+                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                        <div class="w-full border-t border-slate-200"></div>
+                    </div>
+                    <div class="relative flex justify-center">
+                        <span class="bg-white px-3 font-heading font-semibold text-xs text-slate-500 uppercase tracking-wider border border-slate-200 rounded-full py-1">vs.</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT PANEL: With TeamFlow -->
+                <div class="flex flex-col items-center justify-between p-4 relative bg-white">
+                    <div class="w-full flex flex-col items-center">
+                        <!-- Premium Active Header -->
+                        <span class="text-xs font-bold tracking-[0.15em] text-navy-900 uppercase mb-6 font-heading">With TeamFlow</span>
+                        
+                        <!-- Flow Diagram Elements (3 items linked with precise Brand Blue Arrows) -->
+                        <div class="flex items-start justify-center gap-4 w-full">
+                            
+                            <!-- Decision step -->
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-50 border border-brand-100 shadow-sm flex items-center justify-center p-3 text-brand-600 hover:scale-[1.03] transition-transform">
+                                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
+                                <span class="text-[11px] font-bold text-slate-800 tracking-wide uppercase font-heading">Decision</span>
+                            </div>
+
+                            <!-- Brand Arrow Connector -->
+                            <div class="flex items-center justify-center h-14 sm:h-16">
+                                <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+
+                            <!-- Reasoning step -->
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-50 border border-brand-100 shadow-sm flex items-center justify-center p-3 text-brand-600 hover:scale-[1.03] transition-transform">
+                                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5" />
+                                        <path d="M9 18h6" />
+                                        <path d="M10 22h4" />
+                                    </svg>
+                                </div>
+                                <span class="text-[11px] font-bold text-slate-800 tracking-wide uppercase font-heading">Reasoning</span>
+                            </div>
+
+                            <!-- Brand Arrow Connector -->
+                            <div class="flex items-center justify-center h-14 sm:h-16">
+                                <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+
+                            <!-- Work step -->
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-50 border border-brand-100 shadow-sm flex items-center justify-center p-3 text-brand-600 hover:scale-[1.03] transition-transform">
+                                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                                    </svg>
+                                </div>
+                                <span class="text-[11px] font-bold text-slate-800 tracking-wide uppercase font-heading">Work</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Vertical line down to preserved state (Balanced layout) -->
+                    <div class="flex flex-col items-center mt-6 w-full">
+                        <div class="w-[1px] h-8 bg-brand-600"></div>
+                        
+                        <!-- Final state card -->
+                        <div class="mt-3 flex flex-col items-center">
+                            <div class="w-8 h-8 rounded-full bg-brand-600 border border-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/15 mb-2">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span class="font-heading font-extrabold text-sm text-slate-900 tracking-wide uppercase">Context preserved</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+        <!-- STEP 5: Feature Narrative Section (Product Showcase + Narrative Block) -->
+    <section class="relative bg-[#F8FAFC] py-20 lg:py-[120px] overflow-hidden border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header (Centered on Top) -->
+            <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600 block mb-3 font-heading">
+                    BUILT FOR HOW TEAMS WORK
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-navy-900 tracking-tight leading-tight mb-5">
+                    Capture decisions. Connect context. Move forward.
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- LEFT SIDE: Product Narrative side-by-side with Dashboard on desktop -->
+                <div class="lg:col-span-5 flex flex-col items-start text-left">
+                    <!-- Value Points Stacks -->
+                    <div class="space-y-8 w-full mb-8">
+                        
+                        <!-- Value point 1 -->
+                        <div class="flex items-start gap-4">
+                            <!-- Enclosed Double-Nested Box Design -->
+                            <div class="p-4 bg-white border border-slate-200/60 rounded-xl shadow-sm flex-shrink-0">
+                                <div class="w-11 h-11 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-600">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-navy-900">Decision Records</h3>
+                                <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+                                    Capture the decision, the reasoning, and who made it.
+                                </p>
+                                <a href="#" class="inline-flex items-center gap-1 text-[16px] font-semibold text-slate-700 hover:text-slate-950 sm:mt-2 mt-4 transition-colors">
+                                    <span>Learn more</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Value point 2 -->
+                        <div class="flex items-start gap-4">
+                            <!-- Enclosed Double-Nested Box Design -->
+                            <div class="p-4 bg-white border border-slate-200/60 rounded-xl shadow-sm flex-shrink-0">
+                                <div class="w-11 h-11 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-600">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-navy-900">Linked Evidence</h3>
+                                <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+                                    Attach research, feedback, data, and conversations.
+                                </p>
+                                <a href="#" class="inline-flex items-center gap-1 text-[16px] font-semibold text-slate-700 hover:text-slate-950 sm:mt-2 mt-4 transition-colors">
+                                    <span>Learn more</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Value point 3 -->
+                        <div class="flex items-start gap-4">
+                            <!-- Enclosed Double-Nested Box Design -->
+                            <div class="p-4 bg-white border border-slate-200/60 rounded-xl shadow-sm flex-shrink-0">
+                                <div class="w-11 h-11 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-600 flex-shrink-0">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-navy-900">Context Timeline</h3>
+                                <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+                                    See how decisions evolved and why things changed.
+                                </p>
+                                <a href="#" class="inline-flex items-center gap-1 text-[16px] font-semibold text-slate-700 hover:text-slate-950 sm:mt-2 mt-4 transition-colors">
+                                    <span>Learn more</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left CTA Block
+                    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto pt-2">
+                        <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 active:bg-brand-800 rounded-xl shadow-lg shadow-brand-500/15 hover:shadow-brand-500/25 transition-all">
+                            Start free trial
+                        </a>
+                        <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-slate-700 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100 rounded-xl transition-all">
+                            Book a live demo
+                        </a>
+                    </div>-->
+                </div> 
+
+                <!-- RIGHT SIDE: SaaS Product Preview Dashboard with integrated Opened Navy Sidebar -->
+                <div class="lg:col-span-7 w-full">
+                    <div class="relative bg-white border border-slate-200/90 rounded-[20px] shadow-2xl shadow-slate-900/5 overflow-hidden flex">
+                        
+                        <!-- Dashboard Left Navy Purple Sidebar -->
+                        <div class="w-48 bg-[#0B0F19] text-slate-400 flex-shrink-0 hidden sm:flex flex-col p-4 border-r border-slate-800 select-none">
+                            <!-- Sidebar Brand Logo Header -->
+                            <div class="flex items-center gap-2 mb-6">
+                                <div class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+                                    </svg>
+                                </div>
+                                <span class="font-heading font-extrabold text-sm text-white tracking-tight">TeamFlow</span>
+                            </div>
+
+                            <!-- Search & Action items -->
+                            <div class="space-y-1 mb-6">
+                                <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg bg-slate-800/40 text-slate-200 text-xs font-medium cursor-pointer hover:bg-slate-800 hover:text-white transition-all">
+                                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                    <span>Search</span>
+                                </div>
+                                <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-slate-400 text-xs font-medium cursor-pointer hover:bg-slate-800/40 hover:text-slate-200 transition-all">
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0a2 2 0 01-2 2H6a2 2 0 01-2-2m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                                    </svg>
+                                    <span>Inbox</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: Workspace -->
+                            <div class="mb-6">
+                                <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest block px-2 mb-2">Workspace</span>
+                                <div class="space-y-0.5">
+                                    <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg bg-indigo-600/10 text-indigo-400 text-xs font-semibold cursor-pointer">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                        <span>Decisions</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-slate-400 text-xs font-medium cursor-pointer hover:bg-slate-800/40 hover:text-slate-200 transition-all">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                        <span>Initiatives</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-slate-400 text-xs font-medium cursor-pointer hover:bg-slate-800/40 hover:text-slate-200 transition-all">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2zm5-3h8v3H8V4z" />
+                                        </svg>
+                                        <span>Projects</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-slate-400 text-xs font-medium cursor-pointer hover:bg-slate-800/40 hover:text-slate-200 transition-all">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                        <span>Views</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Category: Favorites -->
+                            <div>
+                                <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest block px-2 mb-2">Favorites</span>
+                                <div class="space-y-0.5">
+                                    <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-slate-400 text-xs font-medium cursor-pointer hover:bg-slate-800/40 hover:text-slate-200 transition-all">
+                                        <span class="text-indigo-400">📁</span>
+                                        <span class="truncate">Q2 Roadmap</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-slate-400 text-xs font-medium cursor-pointer hover:bg-slate-800/40 hover:text-slate-200 transition-all">
+                                        <span class="text-indigo-400">📁</span>
+                                        <span class="truncate">Pricing Redesign</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Simulated Content Workspace Panel -->
+                        <div class="flex-1 p-4 sm:p-6 bg-white min-w-0">
+                            <!-- Dashboard Top bar header -->
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-100 gap-4">
+                                <div>
+                                    <h3 class="font-heading font-extrabold text-lg text-navy-900">Decisions</h3>
+                                    <p class="text-[11px] text-slate-400 mt-0.5">Workspace global index</p>
+                                </div>
+                                
+                                <div class="flex items-center justify-between sm:justify-end gap-3 flex-shrink-0">
+                                    <!-- Avatar stack -->
+                                    <div class="flex items-center -space-x-1.5 mr-1">
+                                        <span class="w-7 h-7 rounded-full border-2 border-white bg-indigo-200 text-[10px] font-bold text-slate-700 flex items-center justify-center">SC</span>
+                                        <span class="w-7 h-7 rounded-full border-2 border-white bg-amber-200 text-[10px] font-bold text-slate-700 flex items-center justify-center">ML</span>
+                                        <span class="w-7 h-7 rounded-full border-2 border-white bg-purple-200 text-[10px] font-bold text-slate-700 flex items-center justify-center">ER</span>
+                                        <span class="w-7 h-7 rounded-full border-2 border-white bg-slate-100 text-[9px] font-semibold text-slate-500 flex items-center justify-center">+3</span>
+                                    </div>
+                                    
+                                    <!-- New Decision CTA Button -->
+                                    <button class="inline-flex items-center gap-1 px-3.5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-semibold shadow-md shadow-brand-500/10 transition-colors">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                        <span>New decision</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Filter Controls Bar -->
+                            <div class="flex items-center justify-between py-4 border-b border-slate-100 flex-wrap gap-2">
+                                <div class="flex items-center gap-1.5 overflow-x-auto select-none no-scrollbar">
+                                    <button class="px-3 py-1 bg-brand-50 border border-brand-100 rounded-md text-[11px] font-semibold text-brand-700">All</button>
+                                    <button class="px-3 py-1 hover:bg-slate-50 border border-transparent rounded-md text-[11px] font-medium text-slate-500 transition-colors">Active</button>
+                                    <button class="px-3 py-1 hover:bg-slate-50 border border-transparent rounded-md text-[11px] font-medium text-slate-500 transition-colors">Archived</button>
+                                </div>
+                                
+                                <button class="inline-flex items-center gap-1 px-2.5 py-1 border border-slate-200 hover:border-slate-300 rounded-md text-[11px] font-medium text-slate-500 hover:text-slate-700 transition-all">
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                                    </svg>
+                                    <span>Filter</span>
+                                </button>
+                            </div>
+
+                            <!-- Interactive List of Decisions -->
+                            <div class="space-y-3 mt-4">
+                                <!-- Workspace Row 1 -->
+                                <div class="flex items-center justify-between p-3 bg-slate-50/60 hover:bg-slate-50 rounded-xl border border-slate-100 transition-all duration-200 group cursor-pointer">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 flex-shrink-0 shadow-sm">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <h4 class="font-heading font-bold text-xs text-slate-900 group-hover:text-brand-600 transition-colors truncate">Revamp pricing page messaging</h4>
+                                            <div class="flex items-center gap-1.5 text-[10px] text-slate-400 mt-0.5">
+                                                <span class="font-semibold text-slate-500">Pricing Redesign</span>
+                                                <span>•</span>
+                                                <span>Mar 10, 2026</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 flex-shrink-0 ml-3">Approved</span>
+                                </div>
+
+                                <!-- Workspace Row 2 -->
+                                <div class="flex items-center justify-between p-3 bg-slate-50/60 hover:bg-slate-50 rounded-xl border border-slate-100 transition-all duration-200 group cursor-pointer">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 flex-shrink-0 shadow-sm">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a2 2 0 002 2h3a1 1 0 011 1v3a2 2 0 002 2 2 2 0 010 4 2 2 0 00-2 2v3a1 1 0 01-1 1h-3a2 2 0 00-2 2 2 2 0 01-4 0 2 2 0 00-2-2H7a1 1 0 01-1-1v-3a2 2 0 00-2-2 2 2 0 010-4 2 2 0 002-2V7a1 1 0 011-1h3a2 2 0 002-2V4z" />
+                                            </svg>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <h4 class="font-heading font-bold text-xs text-slate-900 group-hover:text-brand-600 transition-colors truncate">Add Zapier integration</h4>
+                                            <div class="flex items-center gap-1.5 text-[10px] text-slate-400 mt-0.5">
+                                                <span class="font-semibold text-slate-500">Integrations</span>
+                                                <span>•</span>
+                                                <span>In progress</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-semibold bg-amber-50 text-amber-700 border border-amber-100 flex-shrink-0 ml-3">In progress</span>
+                                </div>
+
+                                <!-- Workspace Row 3 -->
+                                <div class="flex items-center justify-between p-3 bg-slate-50/60 hover:bg-slate-50 rounded-xl border border-slate-100 transition-all duration-200 group cursor-pointer">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 flex-shrink-0 shadow-sm">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                            </svg>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <h4 class="font-heading font-bold text-xs text-slate-900 group-hover:text-brand-600 transition-colors truncate">Sunset legacy API v1</h4>
+                                            <div class="flex items-center gap-1.5 text-[10px] text-slate-400 mt-0.5">
+                                                <span class="font-semibold text-slate-500">Platform</span>
+                                                <span>•</span>
+                                                <span>Mar 15, 2026</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 flex-shrink-0 ml-3">Approved</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+ <!-- Testimonials & Logo Cloud Section with tightened layouts and deep slate visual hierarchy -->
+<section class="bg-[#F8FAFC] py-12 lg:py-16 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header (Spacing optimized) -->
+        <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-600 block mb-2.5 font-heading">
+                LOVED BY PRODUCT TEAMS
+            </span>
+            <h2 class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-[36px] text-navy-900 tracking-tight leading-tight">
+                Teams save hours. Every week.
+            </h2>
+        </div>
+
+        <!-- Testimonial Cards Grid (Tightened gap structure, 12px rounded borders) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16 lg:mb-20">
+            
+            <!-- Card 1 (Emma Rodriguez) -->
+            <div class="bg-white p-6 sm:p-7 rounded-xl border border-slate-100 shadow-[0_2px_16px_-3px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_24px_-4px_rgba(99,102,241,0.04)] transition-all duration-300 flex flex-col justify-between">
+                <p class="text-slate-500 text-sm font-medium leading-relaxed mb-6">
+                    “TeamFlow eliminated countless hours spent rediscovering why roadmap decisions were made.”
+                </p>
+                <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Emma Rodriguez" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <h4 class="font-heading font-bold text-sm text-navy-900 leading-none">Emma Rodriguez</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 font-medium">Head of Product, NovaLabs</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 (Marcus Lee) -->
+            <div class="bg-white p-6 sm:p-7 rounded-xl border border-slate-100 shadow-[0_2px_16px_-3px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_24px_-4px_rgba(99,102,241,0.04)] transition-all duration-300 flex flex-col justify-between">
+                <p class="text-slate-500 text-sm font-medium leading-relaxed mb-6">
+                    “Onboarding time for new PMs dropped by 60%. The context is finally easy to find and structured.”
+                </p>
+                <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Marcus Lee" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <h4 class="font-heading font-bold text-sm text-navy-900 leading-none">Marcus Lee</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 font-medium">Co-founder, Elevate</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 (Aisha Patel) -->
+            <div class="bg-white p-6 sm:p-7 rounded-xl border border-slate-100 shadow-[0_2px_16px_-3px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_24px_-4px_rgba(99,102,241,0.04)] transition-all duration-300 flex flex-col justify-between">
+                <p class="text-slate-500 text-sm font-medium leading-relaxed mb-6">
+                    “It's like having a memory for our company. Future us is so grateful.”
+                </p>
+                <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&h=120&q=80" alt="Aisha Patel" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <h4 class="font-heading font-bold text-sm text-navy-900 leading-none">Aisha Patel</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 font-medium">VP of Product, Looply</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Logo Cloud Header -->
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 block font-heading">
+                TRUSTED BY INNOVATIVE TEAMS
+            </span>
+        </div>
+
+        <!-- Logo Grid Container (6 Logos - Desktop: 1 Row, Mobile: 2 Columns - Text is deeper & bigger) -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-8 items-center justify-items-center opacity-95">
+            
+            <!-- 1. NovaLabs -->
+            <div class="flex items-center gap-2.5 text-slate-950 hover:text-indigo-600 transition-colors select-none cursor-default group">
+                <svg class="w-6 h-6 text-slate-950 group-hover:text-indigo-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+                <span class="font-heading font-extrabold text-xl tracking-tight">novalabs</span>
+            </div>
+
+            <!-- 2. Elevate -->
+            <div class="flex items-center gap-2.5 text-slate-950 hover:text-indigo-600 transition-colors select-none cursor-default group">
+                <svg class="w-6 h-6 text-slate-950 group-hover:text-indigo-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                <span class="font-heading font-extrabold text-xl tracking-tight">Elevate</span>
+            </div>
+
+            <!-- 3. Looply -->
+            <div class="flex items-center gap-2.5 text-slate-950 hover:text-indigo-600 transition-colors select-none cursor-default group">
+                <svg class="w-6 h-6 text-slate-950 group-hover:text-indigo-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 6H16" />
+                </svg>
+                <span class="font-heading font-extrabold text-xl tracking-tight">Looply</span>
+            </div>
+
+            <!-- 4. Northbeam -->
+            <div class="flex items-center gap-2 text-slate-950 hover:text-indigo-600 transition-colors select-none cursor-default group">
+                <svg class="w-6 h-6 text-slate-950 group-hover:text-indigo-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="font-heading font-extrabold text-xl tracking-tight">northbeam</span>
+            </div>
+
+            <!-- 5. Stacked -->
+            <div class="flex items-center gap-2.5 text-slate-950 hover:text-indigo-600 transition-colors select-none cursor-default group">
+                <svg class="w-6 h-6 text-slate-950 group-hover:text-indigo-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <span class="font-heading font-extrabold text-xl tracking-tight">stacked</span>
+            </div>
+
+            <!-- 6. Linear -->
+            <div class="flex items-center gap-2.5 text-slate-950 hover:text-indigo-600 transition-colors select-none cursor-default group">
+                <svg class="w-6 h-6 text-slate-950 group-hover:text-indigo-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+                </svg>
+                <span class="font-heading font-extrabold text-xl tracking-tight">Linear</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section class="bg-[#F8FAFC] pt-12">
+    <!-- Continuous Deep Navy Photography Sweep Container with Rounded Top Corners -->
+    <div class="max-w-12xl mx-auto bg-[#05070F] text-white rounded-t-[32px] md:rounded-t-[48px] overflow-hidden relative">
+        
+        <!-- Shiny blue/purple gradient flares matching the glow in image_d057be.jpg -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-t-[32px] md:rounded-t-[48px]">
+            <!-- Main radial purple flare directly behind the title and logo -->
+            <div class="absolute -top-1/4 -left-1/4 w-[120%] h-[150%] bg-[radial-gradient(circle_at_20%_20%,_rgba(79,70,229,0.38)_0%,_rgba(147,51,234,0.18)_50%,_rgba(5,7,15,0)_100%)] blur-[90px]"></div>
+            <!-- Secondary ambient bottom-right sweep to lift the footer design -->
+            <div class="absolute -bottom-48 -right-48 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[130px]"></div>
+        </div>
+        
+        <!-- CTA Section Container -->
+        <div class="relative z-10 px-6 py-16 md:py-20 lg:px-16">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16">
+                
+                <!-- Left Side: Content Block (Left-aligned across both views) -->
+                <div class="flex flex-col items-start text-left max-w-2xl">
+                    <!-- Brand Icon (Styled exactly to match the violet ring in image_d057be.jpg) -->
+                    <div class="w-12 h-12 mb-6 flex-shrink-0">
+                        <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#8B5CF6" />
+                                    <stop offset="100%" stop-color="#4F46E5" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Elegant layered geometric square-ring outer shape -->
+                            <path d="M12 4H36C40.4183 4 44 7.58172 44 12V36C44 40.4183 40.4183 44 36 44H12C7.58172 44 4 40.4183 4 36V12C4 7.58172 7.58172 4 12 4Z" fill="url(#logo-grad)" />
+                            <!-- Inner cutout creating the "donut" or geometric hollow ring -->
+                            <rect x="16" y="16" width="16" height="16" rx="4" fill="#05070F" />
+                        </svg>
+                    </div>
+
+                    <!-- Heading (Stark White, Tight, Heavy Weight as in image_d057be.jpg) -->
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[42px] lg:leading-[1.3] leading-[1.15] text-white tracking-tight">
+                        Preserve the context behind every decision.
+                    </h2>
+
+                    <!-- Supporting Text (Directly matches the copy of the image reference) -->
+                    <p class="mt-6 text-lg text-slate-300 leading-[2]">
+                        Your work already has a history. Make sure your team can understand it.
+                    </p>
+                </div>
+
+                <!-- Right Side: Interactive Action Buttons styled after image_d057be.jpg -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto flex-shrink-0">
+                    <!-- Start Free Button with Arrow (Vibrant Rich Violet Gradient Fill) -->
+                    <a href="#" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 active:scale-[0.98] rounded-xl shadow-xl shadow-indigo-600/25 transition-all transform hover:-translate-y-0.5">
+                        <span>Start free</span>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                    <!-- Book a Demo Outline Button (Transparent, Crisp White Border) -->
+                    <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white hover:text-white bg-transparent hover:bg-white/5 border border-white/20 rounded-xl transition-all">
+                        Book a demo
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Thin Circular Checkmarks (Vertically stacked on Mobile, horizontal on Desktop) -->
+            <div class="mt-10 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-y-3.5 gap-x-8 text-xs sm:text-[13px] text-slate-300 font-medium">
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                    </svg>
+                    <span>Free 14-day trial</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                    </svg>
+                    <span>No credit card required</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                    </svg>
+                    <span>Cancel anytime</span>
+                </div>
+            </div>
+
+            <!-- Horizontal Divider Line -->
+            <hr class="border-slate-500 my-12 opacity-60">
+
+            <!-- Footer Block -->
+            <footer>
+                <!-- 1. DESKTOP ONLY: Extended Grid Columns Layout -->
+                <div class="hidden lg:grid grid-cols-12 gap-8 pb-12">
+                    <!-- Column 1 (Brand Info with accurate matching logo icon) -->
+                    <div class="col-span-4 flex flex-col items-start gap-4">
+                        <a href="#" class="flex items-center gap-3 group">
+                            <div class="w-8 h-8 flex-shrink-0">
+                                <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 4H36C40.4183 4 44 7.58172 44 12V36C44 40.4183 40.4183 44 36 44H12C7.58172 44 4 40.4183 4 36V12C4 7.58172 7.58172 4 12 4Z" fill="url(#logo-grad)" />
+                                    <rect x="16" y="16" width="16" height="16" rx="4" fill="#05070F" />
+                                </svg>
+                            </div>
+                            <span class="font-heading font-extrabold text-xl tracking-tight text-white">TeamFlow</span>
+                        </a>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+                            The workspace where decisions never lose their context. We help team structures grow with clean knowledge longevity.
+                        </p>
+                    </div>
+
+                    <!-- Right side link categories -->
+                    <div class="col-span-8 grid grid-cols-4 gap-8">
+                        <div>
+                            <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-300 mb-4">Product</h4>
+                            <ul class="space-y-2.5">
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Features</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Integrations</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Changelog</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Security</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-300 mb-4">Solutions</h4>
+                            <ul class="space-y-2.5">
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Product Teams</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Engineering Teams</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Design Teams</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Startups</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-300 mb-4">Resources</h4>
+                            <ul class="space-y-2.5">
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Blog</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Guides</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Templates</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Help Center</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-300 mb-4">Company</h4>
+                            <ul class="space-y-2.5">
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">About</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Careers</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Privacy</a></li>
+                                <li><a href="#" class="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Terms</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. MOBILE ONLY: High-Fidelity Simplified Nav Strip Layout (Exactly as shown in Mobile Mockup) -->
+                <div class="flex lg:hidden flex-col items-start gap-6 pb-6">
+                    <!-- Brand Identity matching image_d057be.jpg -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 flex-shrink-0">
+                            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 4H36C40.4183 4 44 7.58172 44 12V36C44 40.4183 40.4183 44 36 44H12C7.58172 44 4 40.4183 4 36V12C4 7.58172 7.58172 4 12 4Z" fill="url(#logo-grad)" />
+                                <rect x="16" y="16" width="16" height="16" rx="4" fill="#05070F" />
+                            </svg>
+                        </div>
+                        <span class="font-heading font-extrabold text-lg tracking-tight text-white">TeamFlow</span>
+                    </div>
+
+                    <!-- Short description -->
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        The workspace where decisions never lose their context.
+                    </p>
+
+                    <!-- Horizontal simplified Page Links Row -->
+                    <nav class="flex flex-wrap items-center gap-x-6 gap-y-2.5 text-xs font-semibold text-slate-300">
+                        <a href="#" class="hover:text-white transition-colors">Product</a>
+                        <a href="#" class="hover:text-white transition-colors">Pricing</a>
+                        <a href="#" class="hover:text-white transition-colors">Resources</a>
+                        <a href="#" class="hover:text-white transition-colors">Company</a>
+                    </nav>
+                </div>
+
+                <!-- Bottom Copyright and Social Block -->
+                <div class="pt-8 border-t border-slate-900/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span class="text-xs text-slate-500">
+                        &copy; 2026 TeamFlow, Inc. All rights reserved.
+                    </span>
+
+                    <!-- Premium Vector Brand Socials -->
+                    <div class="flex items-center gap-5">
+                        <!-- Twitter / X -->
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors" aria-label="Follow us on Twitter/X">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors" aria-label="Follow us on LinkedIn">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
+                            </svg>
+                        </a>
+                        <!-- GitHub -->
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors" aria-label="Follow our GitHub organization">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </footer>
+
+        </div>
+    </div>
+</section>
+
+
+    </main>
+
+    <!-- Interactive Navigation and Responsive Menu Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNavigation = document.getElementById('mobile-navigation');
+            
+            // Hamburger icon animation selectors
+            const burgerTop = document.getElementById('hamburger-top');
+            const burgerMid = document.getElementById('hamburger-mid');
+            const burgerBot = document.getElementById('hamburger-bot');
+            
+            let isMenuOpen = false;
+
+            // Toggle Mobile Menu Open / Close
+            mobileMenuToggle.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                mobileMenuToggle.setAttribute('aria-expanded', isMenuOpen);
+
+                if (isMenuOpen) {
+                    mobileNavigation.classList.add('mobile-menu-active');
+                    
+                    // Transform hamburger to X smoothly
+                    burgerTop.style.transform = 'rotate(45deg)';
+                    burgerTop.style.top = '11px';
+                    burgerMid.style.opacity = '0';
+                    burgerBot.style.transform = 'rotate(-45deg)';
+                    burgerBot.style.top = '11px';
+                    header.classList.add('bg-white');
+                } else {
+                    mobileNavigation.classList.remove('mobile-menu-active');
+                    
+                    // Reset hamburger bars
+                    burgerTop.style.transform = 'none';
+                    burgerTop.style.top = '3px';
+                    burgerMid.style.opacity = '1';
+                    burgerBot.style.transform = 'none';
+                    burgerBot.style.top = '19px';
+                    
+                    if (window.scrollY <= 20) {
+                        header.classList.remove('bg-white');
+                    }
+                }
+            });
+
+            // Smooth backdrop styling on scroll activation
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-nav-shadow');
+                    header.classList.remove('bg-transparent');
+                } else {
+                    if (!isMenuOpen) {
+                        header.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-nav-shadow');
+                        header.classList.add('bg-transparent');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
