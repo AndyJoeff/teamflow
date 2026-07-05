@@ -519,12 +519,12 @@
                         class="inline-flex items-center justify-center rounded-lg p-2 text-dark-muted hover:bg-bgLight hover:text-dark focus:outline-none"
                         aria-controls="mobile-navigation" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <div class="relative h-6 w-6">
+                        <div class="relative flex items-center flex-col h-6 w-6">
                             <span id="hamburger-top"
                                 class="absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out"
                                 style="top: 3px;"></span>
                             <span id="hamburger-mid"
-                                class="absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out"
+                                class="absolute block h-0.5 w-2/3 transform bg-current transition-all duration-300 ease-in-out"
                                 style="top: 11px;"></span>
                             <span id="hamburger-bot"
                                 class="absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out"
@@ -603,21 +603,20 @@
                         </div>
 
                         <!-- Headline (Matching ChatGPT Image font weights & scale) -->
-                        <h1 class="max-[460px]:max-w-[300px] font-heading text-[44px] sm:text-[54px] lg:text-[54px] font-extrabold leading-[1.14] tracking-[-0.035em] text-dark mb-6">
+                        <h1 class="max-[460px]:max-w-[300px] font-heading text-[2.5rem] sm:text-[54px] lg:text-[54px] font-extrabold leading-[1.14] tracking-[-0.035em] text-dark mb-6">
                             Your team's best decisions shouldn't <span class="text-[#6D4AFF]">disappear.</span>
                         </h1>
 
                         <!-- Supporting Text (Max-width 480px) -->
-                        <p class="max-w-[480px] text-lg sm:text-base leading-[1.62] text-dark-muted mb-8 font-medium">
-                            TeamFlow preserves the context behind decisions so your team stays aligned, moves faster,
-                            and builds with confidence.
-                        </p>
+                        <p class="mb-6 text-base sm:text-lg text-dark-muted leading-relaxed max-w-lg sm:max-w-xl lg:max-w-none">
+                        TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.
+                    </p>
 
                         <!-- CTA Row: Desktop = Horizontal, Mobile = Stacked -->
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8">
                             <!-- Primary Start Free Button (56px/h-14 Height) -->
                             <a href="#"
-                                class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-brand px-7 text-sm font-semibold text-white shadow-soft-button hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 transition-all duration-200">
+                                class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-brand px-7 text-sm font-semibold text-white shadow-soft-button hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 transition-all duration-200">
                                 Start free
                                 <svg class="h-4 w-4 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -626,7 +625,7 @@
                             </a>
                             <!-- Secondary Watch Demo Button (56px/h-14 Height) -->
                             <button type="button"
-                                class="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-borderLight bg-white px-7 text-sm font-semibold text-dark hover:bg-bgLight hover:border-dark-muted/30 focus:outline-none focus:ring-2 focus:ring-dark-muted/35 transition-all duration-200">
+                                class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-borderLight bg-white px-7 text-sm font-semibold text-dark hover:bg-bgLight hover:border-dark-muted/30 focus:outline-none focus:ring-2 focus:ring-dark-muted/35 transition-all duration-200">
                                 Watch demo
                                 <svg class="h-5 w-5 text-dark-muted" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                     stroke="currentColor">
@@ -747,7 +746,7 @@
       </div>
 
       <!-- ── Three panels ── -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-3 mb-12">
 
 
         <!-- ══════════════════════════════════
