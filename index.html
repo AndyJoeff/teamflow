@@ -1197,7 +1197,7 @@
       </div>
 
       <!-- ── Bottom stats callout bar ── -->
-   <div class="fade-up rounded-2xl border bg-white p-5 md:px-7 md:py-5 visible" style="transition-delay:0.28s; border-color: rgba(0,0,0,0.07);">
+   <div class="hidden fade-up rounded-2xl border bg-white p-5 md:px-7 md:py-5 visible" style="transition-delay:0.28s; border-color: rgba(0,0,0,0.07);">
       <div class="flex flex-col sm:flex-row sm:items-stretch gap-5 sm:gap-0">
  
         <!-- Label with icon -->
@@ -1242,6 +1242,220 @@
   </section>
 
     </div>
+          <!-- IMPACT SECTION -->
+    <section class="bg-[#FAFBFD] pb-16 lg:pb-24 overflow-hidden relative">
+      <div class="max-w-[70rem] mx-auto px-4">
+
+        <!-- Section Header (Premium Gradient & Line Breaks) -->
+        <div class="text-center mb-16 fade-up visible">
+<p class="text-xs font-bold tracking-widest uppercase text-indigo-500 mb-4">The Impact</p>
+          <h2
+            class="text-3xl leading-[1.1] lg:text-[54px] font-heading font-extrabold tracking-tight text-slate-900 mb-6">
+            Lost context isn’t <br class="sm:hidden inline">just frustrating. <br><span
+              class="text-gradient font-black">It’s expensive.</span>
+          </h2>
+          <p class="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto font-normal leading-relaxed">
+            We analyzed thousands of teams to uncover the real cost of disconnected decisions and missing context.
+          </p>
+        </div>
+
+        <!-- High Fidelity 3-Column Grid Container -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 bg-white rounded-3xl border border-slate-200/60 shadow-sm items-stretch">
+
+          <!-- Column 1: Time Lost Weekly (With mobile border-b divider) -->
+          <!-- Grid layout stays side-by-side on mobile, adjusting gaps on larger screens -->
+          <div
+            class="grid grid-cols-[1fr_auto] items-center gap-4 sm:gap-0 pb-6 lg:pb-0 border-b border-slate-200/60 lg:border-b-0 lg:border-r lg:border-slate-200/60 lg:pr-8">
+
+            <!-- Left Side Block -->
+            <div class="flex flex-col justify-center">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-500">Time Lost Weekly</span>
+
+              <!-- Condensed horizontally on mobile, returns to stacked layout on tablet/desktop -->
+              <div class="flex flex-row items-baseline gap-1.5 md:block mt-2 md:mt-4">
+                <p
+                  class="text-3xl md:text-[42px] font-extrabold text-slate-900 leading-none font-heading tracking-tight">
+                  13+</p>
+                <p class="text-lg md:text-2xl font-bold text-slate-800 leading-none mt-0 md:mt-1 md:mb-4 font-heading">
+                  hours</p>
+              </div>
+
+              <p
+                class="text-xs md:text-sm text-slate-500 leading-normal md:leading-relaxed mt-1.5 md:mt-0 max-w-[240px] md:max-w-none">
+                per team spent searching, recreating context, and aligning on decisions.
+              </p>
+            </div>
+
+            <!-- Right Side: Circular progress block scales up smoothly -->
+            <div class="relative w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 flex items-center justify-center shrink-0">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                <path class="text-slate-100" stroke-width="2.5" stroke="currentColor" fill="none"
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                <path class="text-brand" stroke-width="3" stroke-dasharray="32, 100" stroke-linecap="round"
+                  stroke="currentColor" fill="none"
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+              </svg>
+
+              <!-- Inside textual statistics with responsive fonts and text content -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center p-2 md:p-3 text-center">
+                <span class="text-xl md:text-2xl font-extrabold text-slate-900 font-heading">32%</span>
+
+                <!-- Short text on mobile, exact original text on tablet/desktop -->
+                <span
+                  class="text-[8px] md:text-[8.5px] text-slate-500 font-semibold leading-tight mt-0.5 max-w-[75px] md:max-w-[85px]">
+                  <span class="md:hidden">lost to rework</span>
+                  <span class="hidden md:inline">of a team's time is lost to context rework</span>
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- Column 2: Financial Impact (Divided by subtle vertical borders on desktop, horizontal on mobile) -->
+          <div
+            class="flex flex-col justify-between py-8 lg:py-1 border-b border-slate-200/60 lg:border-b-0 lg:border-r lg:border-slate-200/60 lg:px-8">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-500">Financial Impact</span>
+              <p
+                class="text-3xl md:text-[42px] font-extrabold text-slate-900 leading-none mt-3 font-heading tracking-tight">
+                $2.3M
+              </p>
+              <p class="text-[28px] font-bold text-slate-750 leading-none mt-1 mb-4 font-heading">per year</p>
+              <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                average annual loss for a 100-person product team from duplicated discussions, slow decisions, and
+                context switching.
+              </p>
+            </div>
+          </div>
+
+          <!-- Column 3: Cost Grows Over Time (Aligned and padded correctly) -->
+          <div class="flex flex-col justify-between pt-8 lg:pt-0 lg:pl-8 relative">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-500">Cost Grows Over Time</span>
+            </div>
+
+            <!-- Interactive SVG Line Graph -->
+            <div class="relative w-full h-32 mt-5 select-none">
+              <!-- Y-Axis labels -->
+              <div
+                class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-[9px] font-bold text-slate-400 pr-1.5 pt-0.5 pb-0.5">
+                <span>$3M</span>
+                <span>$2M</span>
+                <span>$1M</span>
+                <span>$0</span>
+              </div>
+
+              <div class="absolute inset-0 pl-8">
+                <svg class="w-full h-full" viewBox="0 0 300 120" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="chart-glow-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#6D4AFF" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#6D4AFF" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Gridlines -->
+                  <line x1="10" y1="15" x2="295" y2="15" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2 2" />
+                  <line x1="10" y1="50" x2="295" y2="50" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2 2" />
+                  <line x1="10" y1="85" x2="295" y2="85" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2 2" />
+                  <line x1="10" y1="115" x2="295" y2="115" stroke="#CBD5E1" stroke-width="1" />
+
+                  <!-- Area & Line Bezier Curves -->
+                  <path d="M10,110 Q40,105 70,95 T130,80 T190,55 T250,45 T290,15" fill="none" stroke="#6D4AFF"
+                    stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M10,110 Q40,105 70,95 T130,80 T190,55 T250,45 T290,15 L290,115 L10,115 Z"
+                    fill="url(#chart-glow-grad)" />
+                  <circle cx="290" cy="15" r="4.5" fill="#6D4AFF" />
+                </svg>
+              </div>
+
+              <!-- Terminal highlight badge -->
+              <div
+                class="absolute right-[2%] top-[-8px] bg-indigo-50 border border-indigo-100 shadow-sm px-2 py-0.5 rounded text-[10px] font-extrabold text-[#6D4AFF]">
+                $2.3M
+              </div>
+            </div>
+
+            <!-- X-Axis Labels -->
+            <div class="flex justify-between text-[9px] font-bold text-slate-400 mt-2 pl-8 pr-1">
+              <span>JAN</span>
+              <span>MAR</span>
+              <span>MAY</span>
+              <span>JUL</span>
+              <span>SEP</span>
+              <span>NOV</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── White Bottom Recovery Banner (Cost of hidden stats layout) ── -->
+        <div class="mt-6 bg-white rounded-2xl p-5 border border-slate-200/60 shadow-sm">
+          <div class="flex sm:justify-around flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4 w-full lg:w-auto">
+              <div
+                class="flex-shrink-0 w-11 h-11 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+                <!-- Custom Check Icon in place of generic icons -->
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"></circle>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
+                </svg>
+              </div>
+              <p class="text-sm sm:text-base font-semibold text-slate-800 leading-snug">
+                Teams using TeamFlow recover up to <br class="hidden sm:inline"> <span
+                  class="text-brand font-extrabold">35% more time</span> and ship <span
+                  class="text-brand font-extrabold">2x faster.</span>
+              </p>
+            </div>
+
+            <div
+              class="flex items-center justify-between sm:justify-start gap-3 sm:gap-4 w-full lg:w-auto border-t lg:border-t-0 border-slate-100 pt-4 lg:pt-0">
+
+              <!-- Stack container: 3 avatars + badge on mobile, 4 avatars + badge on desktop -->
+              <div class="flex -space-x-2.5 overflow-hidden shrink-0">
+                <!-- Avatar 1 (Emma): Always visible -->
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+                  alt="Emma">
+
+                <!-- Avatar 2 (Marcus): Hidden on mobile, appears on desktop (The ONLY hidden avatar on mobile) -->
+                <img class="hidden lg:inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+                  alt="Marcus">
+
+                <!-- Avatar 3 (Aisha): Always visible -->
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+                  alt="Aisha">
+
+                <!-- Avatar 4 (Sarah): Always visible -->
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+                  alt="Sarah">
+
+                <!-- Counter Badge: Always visible -->
+                <div
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#E0E7FF] text-[10px] font-bold text-indigo-600 ring-2 ring-white">
+                  +85
+                </div>
+              </div>
+
+              <p class="text-xs sm:text-sm text-slate-500 font-semibold tracking-tight leading-snug">
+                Join 2,000+ product teams building with TeamFlow
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="text-center text-[10px] font-medium text-slate-400 mt-4 uppercase tracking-wider">
+          Source: TeamFlow State of Product Teams Report 2024
+        </p>
+
+      </div>
+    </section>
 
     <!-- Category Positioning Section (The Shift) -->
 
@@ -1273,7 +1487,7 @@
             <circle cx="8.5" cy="8.5" r="8" stroke="#d1d5db" stroke-width="1.2" fill="white"></circle>
             <path d="M5.5 5.5l6 6M11.5 5.5l-6 6" stroke="#9ca3af" stroke-width="1.4" stroke-linecap="round"></path>
           </svg>
-          <span class="text-[10px] font-bold tracking-widest uppercase text-gray-400">The Old Way</span>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-gray-400">Traditional Workflow</span>
         </div>
 
         <!-- Scatter area -->
@@ -1404,7 +1618,7 @@
             <circle cx="8.5" cy="8.5" r="8.5" fill="#6366f1"></circle>
             <path d="M4.5 8.5l3 3 5-5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
-          <span class="text-[10px] font-bold tracking-widest uppercase text-indigo-500">The New Way</span>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-indigo-500">With TeamFlow</span>
         </div>
 
         <!-- Steps -->
