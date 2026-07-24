@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO Meta Tags -->
+  <title>TeamFlow - Your team's best decisions shouldn't disappear.</title>
+  <meta name="description"
+    content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence. Built for modern product teams.">
+  <meta name="keywords"
+    content="SaaS, decision tracking, context preservation, product teams, alignment, knowledge management">
+  <meta name="author" content="TeamFlow Inc.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.teamflow.com/">
+  <meta property="og:title" content="TeamFlow - Your team's best decisions shouldn't disappear.">
+  <meta property="og:description"
+    content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.">
+  <meta property="og:image" content="https://www.teamflow.com/assets/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.teamflow.com/">
+  <meta property="twitter:title" content="TeamFlow - Your team's best decisions shouldn't disappear.">
+  <meta property="twitter:description"
+    content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.">
+  <meta property="twitter:image" content="https://www.teamflow.com/assets/og-image.png">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#6D4AFF',
+              15: '#EFEBFF',
+              50: '#F5F3FF',
+              100: '#EDE9FE',
+              200: '#DDD6FE',
+              300: '#C4B5FD',
+              400: '#A78BFA',
+              500: '#8B5CF6',
+              600: '#6366F1', // Primary brand indigo/violet
+              700: '#4F46E5',
+              800: '#4338CA',
+              900: '#312E81',
+              hover: '#524BE3',
+            },
+            dark: {
+              DEFAULT: '#0E1023',
+              muted: '#5B6170',
+              navy: '#05031A',
+            },
+            borderLight: '#E7E8EE',
+            bgLight: '#F8F8FC',
+          },
+          boxShadow: {
+            'glow': '0 20px 50px -10px rgba(99, 102, 241, 0.15)',
+            'card': '0 10px 30px -5px rgba(15, 23, 42, 0.05)',
+            'dash': '0 25px 60px -15px rgba(15, 23, 42, 0.12)',
+            'soft-button': '0 4px 14px 0 rgba(109, 74, 255, 0.22)',
+            'nav-shadow': '0 10px 30px -10px rgba(15, 11, 46, 0.04)',
+            'product-shadow': '0 40px 80px -15px rgba(15, 11, 46, 0.15), 0 0 0 1px rgba(15, 11, 46, 0.03)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-brand: #6D4AFF;
+      --color-brand-hover: #5535E6;
+      --color-dark: #0E1023;
+      --color-dark-muted: #5B6170;
+      --color-border-light: #E7E8EE;
+      --color-bg-light: #F8F8FC;
+    }
+
+    /* Prevent layout shift during mobile menu transitions */
+    .mobile-menu-enter {
+      max-height: 0px;
+      opacity: 0;
+      transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s linear;
+    }
+
+    .mobile-menu-active {
+      max-height: 480px;
+      opacity: 1;
+    }
+
+
+
+    /* Mesh / Cobweb Background Styling */
+    .bg-mesh-pattern {
+      background-image: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.08) 0%, rgba(248, 247, 255, 0) 70%);
+    }
+
+    /* Custom scrollbar for tab navigation on small devices */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Gradient Text Utility */
+    .text-gradient {
+      background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-white text-slate-900 font-sans antialiased selection:bg-brand-100 selection:text-brand-700 min-h-screen flex flex-col">
+
+  <!-- NAVIGATION BAR -->
+  <header id="main-header" class="sticky top-0 z-50 w-full bg-transparent transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-6 sm:px-8">
+      <div class="flex h-[60px] sm:h-20 items-center justify-between">
+
+        <!-- Logo Zone -->
+        <div class="flex flex-shrink-0 items-center">
+          <a href="index.html" class="flex items-center gap-1 group" aria-label="TeamFlow Home">
+            <svg class="h-8 w-8 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 32 32" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="#6D4AFF" />
+              <path
+                d="M12 10C10.8954 10 10 10.8954 10 12V20C10 21.1046 10.8954 22 12 22H20C21.1046 22 22 21.1046 22 20V12C22 10.8954 21.1046 10 20 10H12ZM14.5 13.5H17.5V15.5H14.5V13.5ZM14.5 16.5H17.5V18.5H14.5V16.5Z"
+                fill="white" />
+            </svg>
+            <span class="text-[21px] font-extrabold tracking-tight text-slate-900">TeamFlow</span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Global navigation">
+          <!-- Active Link (Product) with Indicator Dot -->
+          <a href="#"
+            class="relative rounded-md px-3.5 py-2 text-[15px] font-semibold text-dark transition-colors duration-200">
+            <span>Product</span>
+            <!-- Active Indicator Dot (Perfectly Centered horizontally at the bottom) -->
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-600"></span>
+          </a>
+
+          <!-- Solutions Dropdown -->
+          <div class="relative group">
+            <button type="button"
+              class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none"
+              aria-expanded="false">
+              <span>Solutions</span>
+              <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180"
+                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div
+              class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Product
+                Teams</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Engineering
+                Teams</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Design
+                Teams</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Startups</a>
+            </div>
+          </div>
+
+          <a href="#"
+            class="rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200">Pricing</a>
+
+          <!-- Resources Dropdown -->
+          <div class="relative group">
+            <button type="button"
+              class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none"
+              aria-expanded="false">
+              <span>Resources</span>
+              <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180"
+                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div
+              class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Blog</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Guides</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Templates</a>
+              <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Help
+                Center</a>
+            </div>
+          </div>
+
+          <!-- Company Dropdown -->
+          <div class="relative group">
+            <button type="button"
+              class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none"
+              aria-expanded="false">
+              <span>Company</span>
+              <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180"
+                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div
+              class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">About Us</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Careers</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Privacy
+                Policy</a>
+            </div>
+          </div>
+        </nav>
+
+
+        <!-- Action CTA Zone (Right) -->
+        <div class="hidden md:flex items-center gap-5">
+          <a href="#"
+            class="text-[15px] font-semibold text-slate-900 hover:text-brand transition-colors duration-200">Log
+            in</a>
+          <a href="#"
+            class="inline-flex h-11 items-center justify-center rounded-lg bg-brand px-5 text-[15px] font-bold text-white shadow-soft-button hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+            Start free
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle Menu Button -->
+        <div class="flex gap-2 items-center md:hidden">
+          <a href="#"
+            class="inline-flex h-8 items-center justify-center rounded-lg bg-brand px-3 text-[15px] font-[600] text-white hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+            Sign in
+          </a>
+          <button id="mobile-menu-toggle" type="button"
+            class="inline-flex items-center justify-center rounded-lg p-2 text-dark-muted hover:bg-bgLight hover:text-dark focus:outline-none"
+            aria-controls="mobile-navigation" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <div class="relative h-6 w-4">
+              <span id="hamburger-top"
+                class="absolute block h-0.5 w-4 transform bg-current transition-all duration-300 ease-in-out"
+                style="top: 3px; transform: none;"></span>
+              <span id="hamburger-mid"
+                class="absolute block h-0.5 w-4 transform bg-current transition-all duration-300 ease-in-out"
+                style="top: 11px; opacity: 1;"></span>
+              <span id="hamburger-bot"
+                class="absolute block h-0.5 w-4 transform bg-current transition-all duration-300 ease-in-out"
+                style="top: 19px; transform: none;"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-navigation" class="mobile-menu-enter md:hidden overflow-hidden bg-white"
+      aria-label="Mobile navigation">
+      <div class="space-y-1.5 px-6 pb-6 pt-4 border-t border-borderLight/40">
+        <a href="product_page.html"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Product</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Solutions</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Pricing</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Resources</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Company</a>
+
+        <div class="my-4 border-t border-borderLight/80"></div>
+
+        <div class="grid grid-cols-1 gap-3">
+          <a href="#"
+            class="flex h-11 items-center justify-center rounded-lg border border-borderLight text-base font-semibold text-slate-900 hover:bg-bgLight transition-colors duration-200">
+            Log in
+          </a>
+          <a href="#"
+            class="flex h-11 items-center justify-center rounded-lg bg-brand text-base font-semibold text-white shadow-soft-button hover:bg-brand-hover transition-all duration-200">
+            Start free
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- HERO SECTION WITH SUBTLE COBWEB/MESH BACKGROUND -->
+    <section class="relative pt-12 pb-16 lg:pb-24 overflow-hidden">
+      <div
+        class="absolute top-[30%] bottom-0 bg-white left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[200px] lg:w-[800px] lg:h-[500px] z-10 blur-3xl rounded-full">
+      </div>
+
+      <!-- Subtle SVG Cobweb Mesh Grid Overlay -->
+      <div
+        class="absolute left-[-50%] bottom-[0%] top-[-40%] md:top-[-58%] inset-0 z-0 pointer-events-none flex items-center justify-center opacity-20 sm:opacity-20">
+
+        <img class="w-full h-auto object-cover" src="icon-1.svg">
+      </div>
+      <div class="max-w-xs sm:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+
+        <!-- Product Badge -->
+        <div
+          class="inline-flex items-center gap-2 pl-3 pr-6 py-2 rounded-full bg-white border border-slate-100 shadow-xs mb-6">
+
+          <!-- Purple background circle with centered diamond SVG -->
+          <span class="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-50 shrink-0">
+            <svg class="w-2.5 h-2.5 text-indigo-600 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2L2 12l10 10 10-10L12 2z"></path>
+            </svg>
+          </span>
+
+          <span class="text-[12px] font-bold tracking-wider uppercase text-slate-700 font-heading">PRODUCT</span>
+
+        </div>
+
+
+
+        <!-- Main Headline -->
+        <h1
+          class="text-[1.75rem]/[1.1] sm:text-5xl/[1.1] lg:text-[66px]/[1.1] font-[720] text-slate-900 tracking-tight leading-[1.1] mb-6">
+          Decision intelligence <br class="hidden sm:inline">
+          <span class="text-gradient sm:hidden">for modern teams.</span>
+          <span class="text-[62px] hidden text-gradient sm:inline">for modern product teams.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="max-w-[34rem] mx-auto text-slate-600 text-sm sm:text-lg leading-relaxed font-normal mb-6">
+          Explore how TeamFlow captures decisions, connects evidence, and preserves organizational memory.
+        </p>
+
+        <!-- Action CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">
+          <!-- Demo Play Button -->
+          <button id="open-demo-btn"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-[13px] shadow-lg shadow-brand-600/25 transition-all transform active:scale-95 group">
+            <span
+              class="w-3 h-3 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-3 h-3 text-white fill-current" viewBox="8 5 11 14">
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+            </span>
+            Watch interactive demo
+          </button>
+
+          <!-- Secondary CTA -->
+          <a href="#"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200/90 shadow-md transition-all hover:border-slate-300">
+            Explore on your own
+          </a>
+        </div>
+
+        <!-- Social Proof / Customer Rating Stack -->
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-3 text-base sm:text-sm font-medium text-slate-600">
+          <!-- Avatar Stack -->
+          <div class="flex -space-x-1 overflow-hidden">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+          </div>
+
+          <!-- Star Rating & Label -->
+          <div class="flex items-center flex-col sm:flex-row gap-1.5">
+            <div class="flex text-amber-400 -space-x-0.5">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+            </div>
+            <span class="text-slate-500">Loved by product teams worldwide</span>
+          </div>
+
+
+        </div>
+
+      </div>
+      <!-- TRUSTED BY INNOVATIVE TEAMS LOGO STRIP -->
+      <div class="hidden md:block relative z-10 max-w-7xl pt-8 sm:pt-12  mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4 sm:mb-4">
+          Trusted by innovative teams
+        </p>
+        <div
+          class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+          <!-- Novalabs Logo -->
+          <div
+            class="flex items-center gap-2 text-slate-800 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+            <svg class="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span>novalabs</span>
+          </div>
+          <!-- Elevate Logo -->
+          <div
+            class="flex items-center gap-2 text-slate-800 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+            <svg class="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>Elevate</span>
+          </div>
+          <!-- Looply Logo -->
+          <div
+            class="flex items-center gap-2 text-slate-800 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+            <svg class="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+            </svg>
+            <span>Looply</span>
+          </div>
+          <!-- Northbeam Logo -->
+          <div
+            class="flex items-center gap-2 text-slate-800 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+            <svg class="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span>northbeam</span>
+          </div>
+          <!-- Stacked Logo -->
+          <div
+            class="flex items-center gap-2 text-slate-800 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+            <svg class="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            <span>stacked</span>
+          </div>
+          <!-- Linear Logo -->
+          <div
+            class="flex items-center gap-2 text-slate-800 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+            <svg class="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="m10 15 5-3-5-3v6z"></path>
+            </svg>
+            <span>Linear</span>
+          </div>
+        </div>
+      </div>
+      <section class="py-12 lg:py-20 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+          <!-- SHARED DASHBOARD CONTAINER (Desktop & Mobile optimized responsive images) -->
+          <div class="absolute -inset-64 rounded-3xl bg-gradient-to-tr from-brand/15 blur-3xl z-1">
+          </div>
+          <section class="pb-20 relative z-10 sm:px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+
+            <!-- Feature Navigation Tabs Container -->
+
+
+            <!-- Shared Dashboard Container -->
+            <!-- Requirement: Place both desktop & mobile placeholders inside same shared container with identical spacing, rounded corners, overflow handlings -->
+            <div
+              class="relative w-full rounded-2xl sm:rounded-3xl border-2 border-white bg-white shadow-product-shadow overflow-hidden group">
+
+              <!-- Desktop Dashboard Placeholder Image (Displayed conditionally: hidden lg:block) -->
+              <!-- Note: User can easily replace the src attribute with their desktop dashboard image URL -->
+              <img id="desktop-dashboard-img" src="teamflow-desktop.png" alt="TeamFlow Product Dashboard - Desktop View"
+                class="hidden lg:block w-full h-auto object-cover object-top select-none pointer-events-none transition-transform duration-500 group-hover:scale-[1.005]">
+
+              <!-- Mobile Dashboard Placeholder Image (Displayed conditionally: block lg:hidden) -->
+              <!-- Note: User can easily replace the src attribute with their mobile dashboard image URL -->
+              <img id="mobile-dashboard-img" src="teamflow-mobile.png" alt="TeamFlow Product Dashboard - Mobile View"
+                class="block lg:hidden w-full h-auto object-cover object-top select-none pointer-events-none">
+
+              <!-- Bottom-only Gradient Overlay -->
+              <!-- Requirement: Begins fully transparent several pixels above the bottom, then gradually transitions to the page background color at bottom edge to visually blend the dashboard into the following section and encourage scrolling -->
+              <!-- Effect is stronger on mobile (h-36 sm:h-28) and subtle on desktop (lg:h-24) -->
+              <!--<div
+                class="sm:hidden absolute bottom-0 inset-x-0 h-36 sm:h-28 lg:h-24 bg-gradient-to-t from-[#fafbfc] via-[#fafbfc]/80 via-40% to-transparent pointer-events-none z-20">
+              </div>-->
+
+            </div>
+
+          </section>
+
+        </div>
+      </section>
+    </section>
+
+    <!-- DASHBOARD PREVIEW SECTION WITH FEATURE TABS -->
+    <section class="py-12 lg:py-20 relative z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <script type="text/notjs">
+        <!-- FEATURE TABS BAR -->
+        <div class="mb-8 overflow-x-auto no-scrollbar py-2">
+          <div
+            class="inline-flex min-w-full lg:min-w-0 lg:w-full bg-white p-2 rounded-2xl border border-slate-200/80 shadow-card justify-between gap-1 sm:gap-2">
+
+            <!-- Tab 1: Overview (Active) -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group border-transparent hover:bg-slate-50">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Overview</span>
+              </div>
+              <p class="text-[11px] text-slate-500 truncate pl-6">See the big picture</p>
+            </button>
+
+            <!-- Tab 2: Decisions -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group border-transparent hover:bg-slate-50">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Decisions</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Capture every decision</p>
+            </button>
+
+            <!-- Tab 3: Evidence -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group border-transparent hover:bg-slate-50">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Evidence</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Connect what matters</p>
+            </button>
+
+            <!-- Tab 4: Timeline -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group active bg-brand-50/80 border-brand-200/60 shadow-2xs">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-900 group-hover:text-brand-600">Timeline</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Follow the context</p>
+            </button>
+
+            <!-- Tab 5: AI Summaries -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 hover:bg-slate-50 border border-transparent group">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">AI Summaries</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Surface key insights</p>
+            </button>
+
+            <!-- Tab 6: Search -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 hover:bg-slate-50 border border-transparent group">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Search</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Find the why</p>
+            </button>
+
+            <!-- Tab 7: Integrations -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 hover:bg-slate-50 border border-transparent group">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M11 4a2 2 0 114 0v1a2 2 0 002 2h1a2 2 0 110 4h-1a2 2 0 00-2 2v1a2 2 0 11-4 0v-1a2 2 0 00-2-2H7a2 2 0 110-4h1a2 2 0 002-2V5z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Integrations</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Works with your stack</p>
+            </button>
+
+          </div>
+        </div>
+        </script>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- DEMO VIDEO MODAL (Interactive Enhancement) -->
+  <div id="demo-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md transition-opacity">
+    <div class="bg-slate-900 rounded-2xl max-w-3xl w-full border border-slate-800 shadow-2xl overflow-hidden relative">
+      <div class="flex items-center justify-between p-4 border-b border-slate-800">
+        <h3 class="text-white font-bold text-base flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+          TeamFlow Interactive Walkthrough
+        </h3>
+        <button id="close-demo-btn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="aspect-video bg-black flex items-center justify-center relative">
+        <div class="text-center p-8">
+          <div
+            class="w-16 h-16 rounded-full bg-brand-600/20 text-brand-500 flex items-center justify-center mx-auto mb-4 border border-brand-500/30">
+            <svg class="w-8 h-8 fill-current ml-1" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-1">Interactive Product Demo</h4>
+          <p class="text-slate-400 text-xs max-w-sm mx-auto">This modal represents the video demo overlay triggering
+            from the primary hero button.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+    // Interactive navigation and responsive menu logic
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('main-header');
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNavigation = document.getElementById('mobile-navigation');
+
+      // Hamburger icon animation selectors
+      const burgerTop = document.getElementById('hamburger-top');
+      const burgerMid = document.getElementById('hamburger-mid');
+      const burgerBot = document.getElementById('hamburger-bot');
+
+      let isMenuOpen = false;
+
+      // Toggle Mobile Menu Open / Close
+      mobileMenuToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        mobileMenuToggle.setAttribute('aria-expanded', isMenuOpen);
+
+        if (isMenuOpen) {
+          mobileNavigation.classList.add('mobile-menu-active');
+
+          // Transform hamburger to X smoothly
+          burgerTop.style.transform = 'rotate(45deg)';
+          burgerTop.style.top = '11px';
+          burgerMid.style.opacity = '0';
+          burgerBot.style.transform = 'rotate(-45deg)';
+          burgerBot.style.top = '11px';
+          header.classList.add('bg-white');
+        } else {
+          mobileNavigation.classList.remove('mobile-menu-active');
+
+          // Reset hamburger bars
+          burgerTop.style.transform = 'none';
+          burgerTop.style.top = '3px';
+          burgerMid.style.opacity = '1';
+          burgerBot.style.transform = 'none';
+          burgerBot.style.top = '19px';
+
+          if (window.scrollY <= 20) {
+            header.classList.remove('bg-white');
+          }
+        }
+      });
+
+      // Smooth backdrop styling on scroll activation
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          header.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-nav-shadow');
+          header.classList.remove('bg-transparent');
+        } else {
+          if (!isMenuOpen) {
+            header.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-nav-shadow');
+            header.classList.add('bg-transparent');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
