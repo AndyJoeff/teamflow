@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO Meta Tags -->
+  <title>TeamFlow - Your team's best decisions shouldn't disappear.</title>
+  <meta name="description"
+    content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence. Built for modern product teams.">
+  <meta name="keywords"
+    content="SaaS, decision tracking, context preservation, product teams, alignment, knowledge management">
+  <meta name="author" content="TeamFlow Inc.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.teamflow.com/">
+  <meta property="og:title" content="TeamFlow - Your team's best decisions shouldn't disappear.">
+  <meta property="og:description"
+    content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.">
+  <meta property="og:image" content="https://www.teamflow.com/assets/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.teamflow.com/">
+  <meta property="twitter:title" content="TeamFlow - Your team's best decisions shouldn't disappear.">
+  <meta property="twitter:description"
+    content="TeamFlow preserves the context behind decisions so your team stays aligned, moves faster, and builds with confidence.">
+  <meta property="twitter:image" content="https://www.teamflow.com/assets/og-image.png">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#6D4AFF',
+              15: '#EFEBFF',
+              50: '#F5F3FF',
+              100: '#EDE9FE',
+              200: '#DDD6FE',
+              300: '#C4B5FD',
+              400: '#A78BFA',
+              500: '#8B5CF6',
+              600: '#6366F1', // Primary brand indigo/violet
+              700: '#4F46E5',
+              800: '#4338CA',
+              900: '#312E81',
+              hover: '#524BE3',
+            },
+            'brand-purple-light': '#6952E3',
+            'brand-purple-dark': '#5539DA',
+            'brand-blue-light': '#4A88E9',
+            'brand-blue-dark': '#3B72D4',
+            'brand-green-light': '#38D39E',
+            'brand-green-dark': '#29B484',
+            dark: {
+              DEFAULT: '#0E1023',
+              muted: '#5B6170',
+              navy: '#05031A',
+            },
+            borderLight: '#E7E8EE',
+            bgLight: '#F8F8FC',
+          },
+          boxShadow: {
+            'glow': '0 20px 50px -10px rgba(99, 102, 241, 0.15)',
+            'card': '0 10px 30px -5px rgba(15, 23, 42, 0.05)',
+            'dash': '0 25px 60px -15px rgba(15, 23, 42, 0.12)',
+            'soft-button': '0 4px 14px 0 rgba(109, 74, 255, 0.22)',
+            'nav-shadow': '0 10px 30px -10px rgba(15, 11, 46, 0.04)',
+            'product-shadow': '0 40px 80px -15px rgba(15, 11, 46, 0.15), 0 0 0 1px rgba(15, 11, 46, 0.03)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-brand: #6D4AFF;
+      --color-brand-hover: #5535E6;
+      --color-dark: #0E1023;
+      --color-dark-muted: #5B6170;
+      --color-border-light: #E7E8EE;
+      --color-bg-light: #F8F8FC;
+    }
+
+    /* Prevent layout shift during mobile menu transitions */
+    .mobile-menu-enter {
+      max-height: 0px;
+      opacity: 0;
+      transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s linear;
+    }
+
+    .mobile-menu-active {
+      max-height: 480px;
+      opacity: 1;
+    }
+
+    .timeline-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      letter-spacing: -0.2px;
+      box-shadow:
+        0 12px 30px -6px rgba(79, 70, 229, 0.12),
+        0 4px 12px -4px rgba(0, 0, 0, 0.06) !important;
+      border: none !important;
+
+    }
+
+    /* Mesh / Cobweb Background Styling */
+    .bg-mesh-pattern {
+      background-image: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.08) 0%, rgba(248, 247, 255, 0) 70%);
+    }
+
+    /* Custom scrollbar for tab navigation on small devices */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Gradient Text Utility */
+    .text-gradient {
+      background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Base track for all items (light gray line) */
+    .accordion-item {
+      position: relative;
+    }
+
+    .accordion-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background-color: #e2e8f0;
+      /* slate-200 */
+      border-radius: 9999px;
+    }
+
+    /* The blue progress bar filling over the active item */
+    .accordion-progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 0%;
+      background-color: #2563eb;
+      /* brand-600 / blue-600 */
+      border-radius: 9999px;
+      /* Transition applied dynamically via JS to handle reset vs animate states */
+    }
+
+    /* Smooth accordion expand/collapse using CSS grid */
+    .accordion-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease-out;
+    }
+
+    .accordion-item.active .accordion-content {
+      grid-template-rows: 1fr;
+    }
+
+    .accordion-content-inner {
+      overflow: hidden;
+    }
+
+    /* Fixed aspect-ratio container to prevent layout jumping */
+    .dashboard-window {
+      position: relative;
+      width: 100%;
+      /* Standard 16:10 or 16:9 aspect ratio box to hold images evenly */
+      aspect-ratio: auto 1368 / 1000;
+      /* rounded-2xl */
+      overflow: hidden;
+    }
+
+    /* All images stacked directly on top of each other */
+    .dashboard-window img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Ensures images fit the container neatly */
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      pointer-events: none;
+    }
+
+    /* Active image fades in smoothly */
+    .dashboard-window img.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-white text-slate-900 font-sans antialiased selection:bg-brand-100 selection:text-brand-700 min-h-screen flex flex-col">
+
+  <!-- NAVIGATION BAR -->
+  <header id="main-header" class="sticky top-0 z-50 w-full bg-transparent transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-6 sm:px-8">
+      <div class="flex h-[60px] sm:h-20 items-center justify-between">
+
+        <!-- Logo Zone -->
+        <div class="flex flex-shrink-0 items-center">
+          <a href="index.html" class="flex items-center gap-1 group" aria-label="TeamFlow Home">
+            <img class="w-8 h-auto object-cover" src="assets/teamflow-logo.png">
+            <span class="text-[21px] font-extrabold tracking-tight text-slate-900">TeamFlow</span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 lg:space-x-2" aria-label="Global navigation">
+          <!-- Active Link (Product) with Indicator Dot -->
+          <a href="#"
+            class="relative rounded-md px-3.5 py-2 text-[15px] font-semibold text-dark transition-colors duration-200">
+            <span>Product</span>
+            <!-- Active Indicator Dot (Perfectly Centered horizontally at the bottom) -->
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-600"></span>
+          </a>
+
+          <!-- Solutions Dropdown -->
+          <div class="relative group">
+            <button type="button"
+              class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none"
+              aria-expanded="false">
+              <span>Solutions</span>
+              <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180"
+                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div
+              class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Product
+                Teams</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Engineering
+                Teams</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Design
+                Teams</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Startups</a>
+            </div>
+          </div>
+
+          <a href="#"
+            class="rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200">Pricing</a>
+
+          <!-- Resources Dropdown -->
+          <div class="relative group">
+            <button type="button"
+              class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none"
+              aria-expanded="false">
+              <span>Resources</span>
+              <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180"
+                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div
+              class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Blog</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Guides</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Templates</a>
+              <a href="#" class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Help
+                Center</a>
+            </div>
+          </div>
+
+          <!-- Company Dropdown -->
+          <div class="relative group">
+            <button type="button"
+              class="inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-dark-muted hover:text-dark transition-colors duration-200 group-hover:text-dark focus:outline-none"
+              aria-expanded="false">
+              <span>Company</span>
+              <svg class="h-4 w-4 text-dark-muted/70 transition-transform duration-200 group-hover:rotate-180"
+                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div
+              class="absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 origin-top rounded-xl bg-white p-2 shadow-nav-shadow ring-1 ring-black/5">
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">About Us</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Careers</a>
+              <a href="#"
+                class="block rounded-lg px-4 py-2.5 text-sm text-dark hover:bg-bgLight transition-colors">Privacy
+                Policy</a>
+            </div>
+          </div>
+        </nav>
+
+
+        <!-- Action CTA Zone (Right) -->
+        <div class="hidden lg:flex items-center gap-5">
+          <a href="#"
+            class="text-[15px] font-semibold text-slate-900 hover:text-brand transition-colors duration-200">Log
+            in</a>
+          <a href="#"
+            class="inline-flex h-11 items-center justify-center rounded-lg bg-brand px-5 text-[15px] font-bold text-white shadow-soft-button hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+            Start free
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle Menu Button -->
+        <div class="flex gap-2 items-center lg:hidden">
+          <a href="#"
+            class="inline-flex h-8 items-center justify-center rounded-lg bg-brand px-3 text-[15px] font-[600] text-white hover:bg-brand-hover hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+            Sign in
+          </a>
+          <button id="mobile-menu-toggle" type="button"
+            class="inline-flex items-center justify-center rounded-lg p-2 text-dark-muted hover:bg-bgLight hover:text-dark focus:outline-none"
+            aria-controls="mobile-navigation" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <div class="relative h-6 w-4">
+              <span id="hamburger-top"
+                class="absolute block h-0.5 w-4 transform bg-current transition-all duration-300 ease-in-out"
+                style="top: 3px; transform: none;"></span>
+              <span id="hamburger-mid"
+                class="absolute block h-0.5 w-4 transform bg-current transition-all duration-300 ease-in-out"
+                style="top: 11px; opacity: 1;"></span>
+              <span id="hamburger-bot"
+                class="absolute block h-0.5 w-4 transform bg-current transition-all duration-300 ease-in-out"
+                style="top: 19px; transform: none;"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-navigation" class="mobile-menu-enter lg:hidden overflow-hidden bg-white"
+      aria-label="Mobile navigation">
+      <div class="space-y-1.5 px-6 pb-6 pt-4 border-t border-borderLight/40">
+        <a href="product_page.html"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Product</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Solutions</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Pricing</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Resources</a>
+        <a href="#"
+          class="block rounded-lg px-4 py-2.5 text-base font-semibold text-dark-muted hover:bg-bgLight hover:text-dark transition-all">Company</a>
+
+        <div class="my-4 border-t border-borderLight/80"></div>
+
+        <div class="grid grid-cols-1 gap-3">
+          <a href="#"
+            class="flex h-11 items-center justify-center rounded-lg border border-borderLight text-base font-semibold text-slate-900 hover:bg-bgLight transition-colors duration-200">
+            Log in
+          </a>
+          <a href="#"
+            class="flex h-11 items-center justify-center rounded-lg bg-brand text-base font-semibold text-white shadow-soft-button hover:bg-brand-hover transition-all duration-200">
+            Start free
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- HERO SECTION WITH SUBTLE COBWEB/MESH BACKGROUND -->
+    <section class="relative pt-10 pb-16 lg:pb-24 overflow-hidden">
+      <div
+        class="absolute top-[30%] bottom-0 bg-white left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[200px] lg:w-[1000px] lg:h-[500px] z-10 blur-3xl rounded-full">
+      </div>
+
+      <!-- Subtle SVG Cobweb Mesh Grid Overlay -->
+      <div
+        class="absolute left-[-50%] bottom-[0%] top-[-40%] md:top-[-40%] inset-0 z-0 pointer-events-none flex items-center justify-center opacity-20 sm:opacity-20">
+
+        <img class="w-full h-auto object-cover" src="icon-1.svg">
+      </div>
+      <div class="max-w-xs sm:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-30">
+
+        <!-- Product Badge -->
+        <div
+          class="inline-flex items-center gap-2 pl-3 pr-6 py-2 rounded-full bg-white border border-slate-100 shadow-xs mb-7">
+
+          <!-- Purple background circle with centered diamond SVG -->
+          <span class="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-50 shrink-0">
+            <svg class="w-2.5 h-2.5 text-indigo-600 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2L2 12l10 10 10-10L12 2z"></path>
+            </svg>
+          </span>
+
+          <span class="text-[12px] font-bold tracking-wider uppercase text-slate-700 font-heading">PRODUCT</span>
+
+        </div>
+
+
+
+        <!-- Main Headline -->
+        <h1
+          class="text-[1.75rem] sm:text-5xl/[1.11] lg:text-[66px] font-bold text-slate-900 tracking-[-0.02em] leading-[1.11] mb-6">
+          Decision intelligence <br class="hidden sm:inline">
+          <span class="text-gradient sm:hidden">for modern teams.</span>
+          <span class="hidden tracking-[-0.06em] text-gradient sm:inline">for modern product teams.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="max-w-[36rem] mx-auto text-slate-600 text-sm sm:text-[19px] leading-relaxed font-normal tracking-[-0.2px] mb-6">
+          Explore how TeamFlow captures decisions, connects evidence, and preserves organizational memory.
+        </p>
+
+        <!-- Action CTAs -->
+        <!-- Grid Container with 2 equal columns -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 items-center gap-5 mb-8 w-full max-w-4xl mx-auto">
+
+          <!-- Left Box (Demo Play Button): Anchored to the center, expands leftward -->
+          <button id="open-demo-btn"
+            class="justify-self-stretch sm:justify-self-end w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-[28px] py-[17px] rounded-xl bg-brand-700 hover:bg-brand-700 text-white text-[13px] shadow-lg shadow-brand-600/25 transition-all transform active:scale-95 group">
+            <span
+              class="w-3 h-3 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-3 h-3 text-white fill-current" viewBox="8 5 11 14">
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+            </span>
+            Watch interactive demo
+          </button>
+
+          <!-- Right Box (Secondary CTA): Anchored to the center, expands rightward -->
+          <a href="#"
+            class="justify-self-stretch sm:justify-self-start w-full sm:w-auto inline-flex items-center justify-center px-8 py-[17px] rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200/90 shadow-lg shadow-slate-300/25 transition-all hover:border-slate-300">
+            Explore on your own
+          </a>
+
+        </div>
+        <!-- Social Proof / Customer Rating Stack -->
+        <div
+          class="hidden lg:flex flex-col sm:flex-row items-center justify-center gap-3 text-base sm:text-sm font-medium text-slate-600">
+          <!-- Avatar Stack -->
+          <div class="flex -space-x-1 overflow-hidden">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+              alt="User Avatar">
+          </div>
+
+          <!-- Star Rating & Label -->
+          <div class="flex items-center flex-col sm:flex-row gap-1.5">
+            <div class="flex text-amber-400 -space-x-0.5">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                </path>
+              </svg>
+            </div>
+            <span class="text-slate-500">Loved by product teams worldwide</span>
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <section class="lg:pt-12 pt-0 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+          <!-- SHARED DASHBOARD CONTAINER (Desktop & Mobile optimized responsive images) -->
+          <div class="absolute -inset-64 rounded-3xl bg-gradient-to-tr from-brand/15 blur-3xl z-1">
+          </div>
+          <section class="relative z-10 sm:px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+
+            <!-- Feature Navigation Tabs Container -->
+
+
+            <!-- Shared Dashboard Container -->
+            <!-- Requirement: Place both desktop & mobile placeholders inside same shared container with identical spacing, rounded corners, overflow handlings -->
+            <div
+              class="relative w-full rounded-2xl sm:rounded-3xl border-2 border-white bg-white shadow-product-shadow overflow-hidden group">
+
+              <!-- Desktop Dashboard Placeholder Image (Displayed conditionally: hidden lg:block) -->
+              <!-- Note: User can easily replace the src attribute with their desktop dashboard image URL -->
+              <img id="desktop-dashboard-img" src="teamflow-desktop.png" alt="TeamFlow Product Dashboard - Desktop View"
+                class="hidden md:block w-full h-auto object-cover object-top select-none pointer-events-none transition-transform duration-500 group-hover:scale-[1.005]">
+
+              <!-- Mobile Dashboard Placeholder Image (Displayed conditionally: block lg:hidden) -->
+              <!-- Note: User can easily replace the src attribute with their mobile dashboard image URL -->
+              <img id="mobile-dashboard-img" src="teamflow-mobile.png" alt="TeamFlow Product Dashboard - Mobile View"
+                class="block md:hidden w-full h-auto object-cover object-top select-none pointer-events-none">
+
+              <!-- Bottom-only Gradient Overlay -->
+              <!-- Requirement: Begins fully transparent several pixels above the bottom, then gradually transitions to the page background color at bottom edge to visually blend the dashboard into the following section and encourage scrolling -->
+              <!-- Effect is stronger on mobile (h-36 sm:h-28) and subtle on desktop (lg:h-24) -->
+              <!--<div
+                class="sm:hidden absolute bottom-0 inset-x-0 h-36 sm:h-28 lg:h-24 bg-gradient-to-t from-[#fafbfc] via-[#fafbfc]/80 via-40% to-transparent pointer-events-none z-20">
+              </div>-->
+
+            </div>
+
+          </section>
+
+        </div>
+      </section>
+    </section>
+    <!-- TRUSTED BY INNOVATIVE TEAMS LOGO STRIP -->
+    <div class="hidden md:block relative z-10 max-w-7xl py-16 lg:py-20 mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Left Edge Mask Fade (Full white at left edge, fades to transparent) -->
+      <div
+        class="absolute left-0 top-0 bottom-0 w-24 sm:w-32 md:w-64 lg:w-80 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none">
+      </div>
+
+      <!-- Right Edge Mask Fade (Full white at right edge, fades to transparent) -->
+      <div
+        class="absolute right-0 top-0 bottom-0 w-24 sm:w-32 md:w-48 lg:w-80 bg-gradient-to-l from-white via-white/80 to-transparent z-20 pointer-events-none">
+      </div>
+
+      <p class="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4 sm:mb-4">
+        Trusted by innovative teams
+      </p>
+
+      <!-- Inner Flex Carousel Track -->
+      <div
+        class="flex overflow-hidden items-center justify-center gap-8 sm:gap-12 md:gap-16 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+        <!-- Novalabs Logo -->
+        <div
+          class="flex items-center gap-2 text-slate-950 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+          <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span>novalabs</span>
+        </div>
+        <!-- Elevate Logo -->
+        <div
+          class="flex items-center gap-2 text-slate-950 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+          <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>Elevate</span>
+        </div>
+        <!-- Looply Logo -->
+        <div
+          class="flex items-center gap-2 text-slate-950 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+          <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+          </svg>
+          <span>Looply</span>
+        </div>
+        <!-- Northbeam Logo -->
+        <div
+          class="flex items-center gap-2 text-slate-950 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+          <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <span>northbeam</span>
+        </div>
+        <!-- Stacked Logo -->
+        <div
+          class="flex items-center gap-2 text-slate-950 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+          <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span>stacked</span>
+        </div>
+        <!-- Linear Logo -->
+        <div
+          class="flex items-center gap-2 text-slate-950 font-bold text-lg tracking-tight hover:text-brand-600 transition-colors">
+          <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m10 15 5-3-5-3v6z"></path>
+          </svg>
+          <span>Linear</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- DASHBOARD PREVIEW SECTION WITH FEATURE TABS -->
+    <script type="text/notjs">
+    <section class="py-12 lg:py-20 relative z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      
+        <!-- FEATURE TABS BAR -->
+        <div class="mb-8 overflow-x-auto no-scrollbar py-2">
+          <div
+            class="inline-flex min-w-full lg:min-w-0 lg:w-full bg-white p-2 rounded-2xl border border-slate-200/80 shadow-card justify-between gap-1 sm:gap-2">
+
+            <!-- Tab 1: Overview (Active) -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group border-transparent hover:bg-slate-50">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Overview</span>
+              </div>
+              <p class="text-[11px] text-slate-500 truncate pl-6">See the big picture</p>
+            </button>
+
+            <!-- Tab 2: Decisions -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group border-transparent hover:bg-slate-50">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Decisions</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Capture every decision</p>
+            </button>
+
+            <!-- Tab 3: Evidence -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group border-transparent hover:bg-slate-50">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Evidence</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Connect what matters</p>
+            </button>
+
+            <!-- Tab 4: Timeline -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 border group active bg-brand-50/80 border-brand-200/60 shadow-2xs">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-900 group-hover:text-brand-600">Timeline</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Follow the context</p>
+            </button>
+
+            <!-- Tab 5: AI Summaries -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 hover:bg-slate-50 border border-transparent group">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">AI Summaries</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Surface key insights</p>
+            </button>
+
+            <!-- Tab 6: Search -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 hover:bg-slate-50 border border-transparent group">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Search</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Find the why</p>
+            </button>
+
+            <!-- Tab 7: Integrations -->
+            <button
+              class="feature-tab flex-1 min-w-[140px] lg:min-w-0 p-3 rounded-xl text-left transition-all duration-200 hover:bg-slate-50 border border-transparent group">
+              <div class="flex items-center gap-2 mb-0.5">
+                <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 flex-shrink-0" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M11 4a2 2 0 114 0v1a2 2 0 002 2h1a2 2 0 110 4h-1a2 2 0 00-2 2v1a2 2 0 11-4 0v-1a2 2 0 00-2-2H7a2 2 0 110-4h1a2 2 0 002-2V5z">
+                  </path>
+                </svg>
+                <span class="text-xs font-bold text-slate-700 group-hover:text-slate-900">Integrations</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate pl-6">Works with your stack</p>
+            </button>
+
+          </div>
+        </div>
+        
+
+      </div>
+    </section>
+  </script>
+    <section class="py-16 lg:py-24 bg-white relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Top Centered Header & Subtitle -->
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <h2 class="text-3xl/tight sm:text-4xl/tight lg:text-[40px] font-bold text-slate-900 tracking-tight leading-tight mb-4">
+            Capture every <span class="text-brand-700">decision.</span>
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+            Document what was decided, why, and what happens next—all in one place.
+          </p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+
+          <!-- Left Listicle Accordion Track -->
+          <div id="decisions-accordion" class="lg:col-span-5 space-y-9">
+
+            <!-- List Item 1 -->
+            <div data-accordion-item data-img-src="teamflow-decisions-dashboard.png"
+              class="accordion-item pl-6 cursor-pointer group">
+              <div class="accordion-progress-bar"></div>
+              <h3
+                class="accordion-title text-xl font-semibold text-slate-500 group-hover:text-slate-900 transition-colors">
+                Structured decision records
+              </h3>
+              <div class="accordion-content">
+                <div class="accordion-content-inner">
+                  <p class="text-slate-600 text-sm sm:text-[1.125rem] leading-relaxed mt-3 font-normal">
+                    Use a consistent format that captures the what, why, impact, and next steps.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- List Item 2 -->
+            <div data-accordion-item data-img-src="teamflow-decisions-ownership.png"
+              class="accordion-item pl-6 cursor-pointer group">
+              <div class="accordion-progress-bar"></div>
+              <h3
+                class="accordion-title text-xl font-semibold text-slate-500 group-hover:text-slate-900 transition-colors">
+                Clear ownership
+              </h3>
+              <div class="accordion-content">
+                <div class="accordion-content-inner">
+                  <p class="text-slate-600 text-sm sm:text-[1.125rem] leading-relaxed mt-3 font-normal">
+                    Every decision has an owner, contributors, and stakeholders all lined up in one place.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- List Item 3 -->
+            <div data-accordion-item data-img-src="teamflow-decisions-tracking.png"
+              class="accordion-item pl-6 cursor-pointer group">
+              <div class="accordion-progress-bar"></div>
+              <h3
+                class="accordion-title text-xl font-semibold text-slate-500 group-hover:text-slate-900 transition-colors">
+                Status &amp; impact tracking
+              </h3>
+              <div class="accordion-content">
+                <div class="accordion-content-inner">
+                  <p class="text-slate-600 text-sm sm:text-[1.125rem] leading-relaxed mt-3 font-normal">
+                    Track decisions from proposal to approval and measure their real impact over time.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Dashboard Showcase Section -->
+          <div class="lg:col-span-7 flex justify-center lg:justify-end">
+            <div class="dashboard-window w-full max-w-2xl">
+
+              <!-- Image 1 -->
+              <img data-img-index="0" src="teamflow-decisions-dashboard.png" alt="Structured decision records"
+                class="active">
+
+              <!-- Image 2 -->
+              <img data-img-index="1" src="teamflow-decisions-ownership.png" alt="Clear ownership">
+
+              <!-- Image 3 -->
+              <img data-img-index="2" src="teamflow-decisions-tracking.png" alt="Status and impact tracking">
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="relative w-full bg-[#060813] py-16 pb-24 overflow-x-hidden">
+      <div class="absolute bottom-0 left-0 w-full pointer-events-none line-height-0">
+        <svg class="block w-full border-0 h-[80px]" viewBox="0 0 1440 110" preserveAspectRatio="none"
+          xmlns="http://w3.org">
+          <path fill="#ffffff" d="M 0 0 C 2 22 150 100 721 108 C 1290 100 1438 24 1440 0 L 1440 128 L -1 128 Z">
+          </path>
+        </svg>
+      </div>
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+          <!-- LEFT COLUMN: Content & Feature List -->
+          <div class="lg:col-span-5 flex flex-col justify-center space-y-8">
+
+            <!-- Badge -->
+            <div class="inline-flex items-center m-0 rounded-full bg-[#6E44FF]/10 pr-4 lg:mb-8 shadow-2xs w-fit">
+              <div
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-[#6E44FF]/10 ring-2 ring-[#060813] text-xs font-bold text-[#6E44FF] shadow-2xs">
+                02
+              </div>
+              <span class="ml-3 text-xs font-bold text-[#6E44FF] tracking-wider uppercase">EVIDENCE</span>
+            </div>
+
+            <!-- Headline -->
+            <h2 class="text-4xl lg:text-[48px]/[1.2] max-w-sm font-bold text-white tracking-tight leading-[1.15]">
+              Connect what <br>
+              <span class="text-[#6E44FF]">informs</span> the decision.
+            </h2>
+
+            <!-- Subheading -->
+            <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-sm">
+              TeamFlow automatically links every decision to the conversations, research, and data that shaped it. No
+              more hunting for context.
+            </p>
+
+            <!-- Feature List -->
+            <div class="space-y-6 pt-2">
+
+              <!-- Feature 1 -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-xl bg-[#6E44FF]/10 border border-[#6E44FF]/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-[#6E44FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold text-base">Collect from anywhere</h3>
+                  <p class="text-slate-400 text-sm mt-0.5">Slack, Docs, Notion, GitHub, meetings &amp; more.</p>
+                </div>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-xl bg-[#6E44FF]/10 border border-[#6E44FF]/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-[#6E44FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold text-base">Auto-link what matters</h3>
+                  <p class="text-slate-400 text-sm mt-0.5">AI connects evidence to the right decisions.</p>
+                </div>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-xl bg-[#6E44FF]/10 border border-[#6E44FF]/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-[#6E44FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold text-base">Organize with context</h3>
+                  <p class="text-slate-400 text-sm mt-0.5">Type, source, impact, and sentiment.</p>
+                </div>
+              </div>
+
+              <!-- Feature 4 -->
+              <!--<div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-xl bg-[#6E44FF]/10 border border-[#6E44FF]/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-[#6E44FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold text-base">Always traceable</h3>
+                  <p class="text-slate-400 text-sm mt-0.5">One click back to the original source.</p>
+                </div>
+              </div> -->
+
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Interactive Node / Network Visual -->
+          <!-- RIGHT COLUMN: Responsive Network Container -->
+          <div
+            class="lg:col-span-7 relative w-full lg:h-[750px] lg:max-w-[570px] ml-auto mr-0 flex flex-col items-center justify-center">
+
+            <!-- ================================================================= -->
+            <!-- MOBILE VIEW (< lg): Stacked Compact Badges + Center Decision Card -->
+            <!-- ================================================================= -->
+
+            <div class="flex lg:hidden flex-col items-center w-full max-w-[360px] mx-auto py-4 relative">
+
+              <!-- MOBILE SVG BACKGROUND OVERLAY -->
+              <!-- Replace src with your mobile-specific network SVG line file -->
+              <div class="absolute inset-0 w-[87%] mx-auto h-full pointer-events-none z-30">
+                <img src="teamflow-decisions-network-mobile.svg" alt="Mobile Network Lines"
+                  class="w-full h-full object-contain pointer-events-none"
+                  style="image-rendering: -webkit-optimize-contrast;" />
+              </div>
+
+              <!-- CONTENT CONTAINER (z-10 ensures nodes sit above the background SVG) -->
+              <div class="relative z-10 flex flex-col items-center w-full gap-16">
+
+                <!-- TOP TOOL BADGES (Slack, Loom, Figma) -->
+                <div class="grid grid-cols-3 gap-6 w-full">
+                  <!-- Slack -->
+                  <div
+                    class="bg-[#0c1022] border border-slate-800/80 shadow-lg rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 text-center">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/250px-Slack_icon_2019.svg.png"
+                      alt="Slack" class="w-7 h-7 object-contain">
+                    <span class="text-xs font-semibold text-slate-200">Slack</span>
+                  </div>
+                  <!-- Loom -->
+                  <div
+                    class="bg-[#0c1022] border border-slate-800/80 shadow-lg rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 text-center">
+                    <img src="pngegg.png" alt="Loom" class="w-7 h-7 object-contain">
+                    <span class="text-xs font-semibold text-slate-200">Loom</span>
+                  </div>
+                  <!-- Figma -->
+                  <div
+                    class="bg-[#0c1022] border border-slate-800/80 shadow-lg rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 text-center">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/500px-Figma-logo.svg.png?_=20250625151003"
+                      alt="Figma" class="w-6 h-7 object-contain">
+                    <span class="text-xs font-semibold text-slate-200">Figma</span>
+                  </div>
+                </div>
+
+                <!-- CENTER NODE: DECISION CARD -->
+                <div
+                  class="w-full max-w-[250px] bg-[#0A0D1B] border-[2px] border-[#8B5CF6] shadow-[0_0_35px_rgba(110,68,255,0.35)] rounded-[24px] px-6 py-5 text-left">
+                  <div class="flex items-center justify-between mb-3.5">
+                    <span class="text-[10px] font-bold tracking-widest text-slate-300 uppercase">DECISION</span>
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-[#0D2E24] text-[#34D399]">
+                        Approved
+                      </span>
+                      <svg class="w-4 h-4 text-[#A78BFA]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                        </path>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <h4 class="text-gray-100 font-semibold text-[16px]/[1.5] mb-2">
+                    Introduce hybrid<br>onboarding flow
+                  </h4>
+                  <p class="text-slate-300/80 text-xs leading-relaxed mb-4">
+                    Improve activation by combining guided setup with templates.
+                  </p>
+
+                  <div class="flex items-center space-x-[-8px] mb-3.5">
+                    <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                      alt="Avatar 1">
+                    <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                      alt="Avatar 2">
+                    <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                      alt="Avatar 3">
+                    <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                      alt="Avatar 4">
+                    <div
+                      class="w-6 h-6 rounded-full bg-[#181E36] border border-[#0A0D1B] flex items-center justify-center text-[9px] font-semibold text-slate-300">
+                      +3
+                    </div>
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <div class="flex items-center gap-2 text-slate-200 text-xs">
+                      <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                      </svg>
+                      <span>Sarah Chen</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-200 text-xs">
+                      <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                      </svg>
+                      <span class="text-[11px]">May 12, 2025</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BOTTOM TOOL BADGES (Docs, Analytics, Meeting) -->
+                <div class="grid grid-cols-3 gap-6 w-full">
+                  <!-- Docs -->
+                  <div
+                    class="bg-[#0c1022] border border-slate-800/80 shadow-lg rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 text-center">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Google_Docs_2020_Logo.svg/500px-Google_Docs_2020_Logo.svg.png?_=20201116131435"
+                      alt="Docs" class="w-6 h-7 object-contain">
+                    <span class="text-xs font-semibold text-slate-200">Docs</span>
+                  </div>
+                  <!-- Analytics -->
+                  <div
+                    class="bg-[#0c1022] border border-slate-800/80 shadow-lg rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 text-center">
+                    <img src="google-analytics.svg" alt="Analytics" class="w-6 h-7 object-contain">
+                    <span class="text-xs font-semibold text-slate-200">Analytics</span>
+                  </div>
+                  <!-- Meeting -->
+                  <div
+                    class="bg-[#0c1022] border border-slate-800/80 shadow-lg rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 text-center">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/960px-Google_Calendar_icon_%282020%29.svg.png?_=20221106121915"
+                      alt="Meeting" class="w-6 h-7 object-contain">
+                    <span class="text-xs font-semibold text-slate-200">Meeting</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- ================================================================= -->
+            <!-- DESKTOP VIEW (lg+): Full Floating Absolute Canvas Layout          -->
+            <!-- ================================================================= -->
+            <div class="hidden lg:flex items-center justify-center w-full h-full relative">
+
+              <!-- SVG Graphic -->
+              <div class="absolute inset-0 w-full h-full pointer-events-none">
+                <img src="teamflow-decisions-network.svg" alt="TeamFlow Decisions Network View"
+                  class="w-[71%] mx-auto h-full pointer-events-none"
+                  style="image-rendering: -webkit-optimize-contrast;">
+              </div>
+
+              <!-- CENTER NODE: DECISION CARD -->
+              <div
+                class="absolute z-20 w-[250px] bg-[#0A0D1B] border-[2px] border-[#8B5CF6] shadow-[0_0_45px_rgba(110,68,255,0.35)] rounded-[24px] px-6 py-5 text-left">
+                <div class="flex items-center justify-between mb-3.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-300 uppercase">DECISION</span>
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-[#0D2E24] text-[#34D399]">
+                      Approved
+                    </span>
+                    <svg class="w-4 h-4 text-[#A78BFA]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                      </path>
+                    </svg>
+                  </div>
+                </div>
+
+                <h4 class="text-gray-100 font-semibold text-[16px]/[1.5] mb-2">
+                  Introduce hybrid<br>onboarding flow
+                </h4>
+                <p class="text-slate-300/80 text-xs leading-relaxed mb-4">
+                  Improve activation by combining guided setup with templates.
+                </p>
+
+                <div class="flex items-center space-x-[-8px] mb-3.5">
+                  <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Avatar 1">
+                  <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Avatar 2">
+                  <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Avatar 3">
+                  <img class="w-6 h-6 rounded-full border border-[#0A0D1B] object-cover"
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Avatar 4">
+                  <div
+                    class="w-6 h-6 rounded-full bg-[#181E36] border border-[#0A0D1B] flex items-center justify-center text-[9px] font-semibold text-slate-300">
+                    +3
+                  </div>
+                </div>
+
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-2 text-slate-200 text-xs">
+                    <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                      </path>
+                    </svg>
+                    <span>Sarah Chen</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-slate-200 text-xs">
+                    <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                      </path>
+                    </svg>
+                    <span class="text-[11px]">May 12, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TOP LEFT: SLACK CARD -->
+              <div
+                class="absolute top-4 left-0 z-10 w-[170px] bg-[#0c1022]/90 backdrop-blur-md border border-slate-800/80 shadow-2xl rounded-2xl p-4 text-left text-white font-sans">
+                <div class="flex gap-3">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/250px-Slack_icon_2019.svg.png"
+                    alt="Slack Logo" class="w-5 h-5 object-contain">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-300 uppercase">SLACK</span>
+                </div>
+                <div class="text-[11px] font-semibold text-slate-300 mb-2 pl-[29px]">
+                  #product-channel
+                </div>
+                <p class="text-slate-300 text-[10px] leading-relaxed mb-3">
+                  Users are getting stuck on template selection. Need a simpler flow.
+                </p>
+                <div class="flex items-center gap-2.5">
+                  <img class="w-7 h-7 rounded-full object-cover border border-slate-700"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Alex Morgan">
+                  <div class="flex flex-col">
+                    <span class="text-[11px] font-medium text-slate-200 leading-tight">Alex Morgan</span>
+                    <span class="text-[10px] text-slate-400 mt-0.5">Apr 28, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TOP CENTER: MEETINGS CARD -->
+              <div
+                class="absolute top-4 left-1/2 -translate-x-1/2 z-10 w-[170px] bg-[#0c1022]/90 backdrop-blur-md border border-slate-800/80 shadow-2xl rounded-2xl p-4 text-left text-white font-sans">
+                <div class="flex items-center gap-2.5 mb-2">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/960px-Google_Calendar_icon_%282020%29.svg.png?_=20221106121915"
+                    alt="Google Calendar Logo" class="w-5 h-5 object-contain">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-300 uppercase">MEETING</span>
+                </div>
+                <div class="mb-2">
+                  <h4 class="text-white font-medium text-[11px] leading-snug mb-0.5">Product sync</h4>
+                </div>
+                <p class="text-slate-300 text-[10px] leading-relaxed mb-2">
+                  "The setup feels long and confusing. I just want to see the value faster."
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] text-slate-400">Apr 24, 2025</span>
+                  <button
+                    class="w-6 h-6 rounded-full bg-[#202744] hover:bg-[#2a345a] flex items-center justify-center transition-colors">
+                    <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- TOP RIGHT: FIGMA CARD -->
+              <div
+                class="absolute top-4 right-0 z-10 w-[170px] bg-[#0c1022]/90 backdrop-blur-md border border-slate-800/80 shadow-2xl rounded-2xl p-4 text-left text-white font-sans">
+                <div class="flex items-center gap-2.5 mb-2">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/500px-Figma-logo.svg.png?_=20250625151003"
+                    alt="Figma Logo" class="w-4 h-5 object-contain">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-300 uppercase">FIGMA</span>
+                </div>
+                <h4 class="text-white font-medium text-[11px] leading-snug mb-2">
+                  Onboarding flow v3
+                </h4>
+                <div
+                  class="relative w-full h-[60px] bg-[#EBF0F5] rounded-lg overflow-hidden mb-2 p-2 flex items-center justify-center border border-slate-700/30">
+                  <svg class="w-full h-full" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="8" width="175" height="74" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1">
+                    </rect>
+                    <rect x="8" y="33" width="24" height="24" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5">
+                    </rect>
+                    <line x1="12" y1="41" x2="28" y2="41" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round">
+                    </line>
+                    <line x1="12" y1="48" x2="22" y2="48" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round">
+                    </line>
+                    <line x1="32" y1="45" x2="48" y2="45" stroke="#94A3B8" stroke-width="1" stroke-dasharray="2 2">
+                    </line>
+                    <rect x="48" y="27" width="34" height="36" rx="6" fill="#FFFFFF" stroke="#3B82F6"
+                      stroke-width="1.5"></rect>
+                    <circle cx="65" cy="40" r="5" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1.5">
+                    </circle>
+                    <line x1="54" y1="53" x2="76" y2="53" stroke="#94A3B8" stroke-width="1"></line>
+                    <line x1="82" y1="45" x2="94" y2="45" stroke="#64748B" stroke-width="1.5"></line>
+                    <rect x="94" y="27" width="34" height="36" rx="6" fill="#FFFFFF" stroke="#CBD5E1"
+                      stroke-width="1.5"></rect>
+                    <rect x="104" y="35" width="14" height="10" rx="2" stroke="#64748B" stroke-width="1.5" fill="none">
+                    </rect>
+                    <line x1="100" y1="53" x2="122" y2="53" stroke="#94A3B8" stroke-width="1"></line>
+                    <line x1="128" y1="45" x2="140" y2="45" stroke="#64748B" stroke-width="1.5"></line>
+                    <rect x="140" y="27" width="34" height="36" rx="6" fill="#FFFFFF" stroke="#CBD5E1"
+                      stroke-width="1.5"></rect>
+                    <rect x="150" y="35" width="14" height="10" rx="2" stroke="#3B82F6" stroke-width="1.5" fill="none">
+                    </rect>
+                    <line x1="146" y1="53" x2="168" y2="53" stroke="#94A3B8" stroke-width="1"></line>
+                    <line x1="174" y1="45" x2="184" y2="45" stroke="#64748B" stroke-width="1.5"></line>
+                    <rect x="184" y="33" width="22" height="24" rx="4" fill="#059669"></rect>
+                    <circle cx="195" cy="45" r="3" fill="#FEF08A"></circle>
+                  </svg>
+                </div>
+                <div class="flex flex-col text-[11px] text-slate-300 gap-0.5">
+                  <span class="font-medium text-slate-200">By Jamie Patel</span>
+                  <span class="text-slate-400 text-[10px]">Apr 30, 2025</span>
+                </div>
+              </div>
+
+              <!-- BOTTOM LEFT: LOOM CARD -->
+              <div
+                class="absolute bottom-0 left-0 z-10 w-[170px] bg-[#0c1022]/90 backdrop-blur-md border border-slate-800/80 shadow-2xl rounded-2xl p-4 text-left text-white font-sans">
+                <div class="flex items-center gap-2.5 mb-2">
+                  <img src="pngegg.png" alt="Loom Logo" class="w-4 h-4 object-contain">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-300 uppercase">LOOM</span>
+                </div>
+                <h4 class="text-white font-medium text-[11px] leading-snug mb-2">
+                  Walkthrough – new flow
+                </h4>
+                <div
+                  class="relative w-full h-[65px] rounded-xl overflow-hidden mb-2 group cursor-pointer border border-slate-700/40">
+                  <img class="w-full h-full object-cover brightness-75"
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Walkthrough preview">
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div
+                      class="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-lg transform transition-transform group-hover:scale-110">
+                      <svg class="w-4 h-4 text-[#6E44FF] ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-1 right-1 bg-black/80 backdrop-blur-sm text-white text-[9px] font-semibold px-2 py-0.5 rounded-md">
+                    03:24
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <img class="w-7 h-7 rounded-full object-cover border border-slate-700"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Jamie Patel">
+                  <div class="flex flex-col">
+                    <span class="text-[11px] font-medium text-slate-200">By Jamie Patel</span>
+                    <span class="text-[10px] text-slate-400 mt-0.5">May 1, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BOTTOM CENTER: GITHUB/DOC CARD -->
+              <div
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[170px] bg-[#0c1022]/90 backdrop-blur-md border border-slate-800/80 shadow-2xl rounded-2xl p-5 text-left text-white font-sans">
+                <div class="flex items-center gap-2.5 mb-2">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Google_Docs_2020_Logo.svg/500px-Google_Docs_2020_Logo.svg.png?_=20201116131435"
+                    alt="Google Docs Logo" class="w-4 h-5 object-contain">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-300 uppercase">DOC</span>
+                </div>
+                <h4 class="text-white font-medium text-[11px] leading-snug mb-2">
+                  Onboarding research synthesis
+                </h4>
+                <p class="text-slate-300/80 text-[10px] leading-relaxed mb-3">
+                  Key insights from 12 user interviews and surveys.
+                </p>
+                <div class="flex items-center gap-2.5">
+                  <img class="w-7 h-7 rounded-full object-cover border border-slate-700"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&amp;auto=format&amp;fit=crop&amp;q=80"
+                    alt="Sarah Chen">
+                  <div class="flex flex-col">
+                    <span class="text-[11px] font-medium text-slate-200">By Sarah Chen</span>
+                    <span class="text-[10px] text-slate-400 mt-0.5">May 2, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BOTTOM RIGHT: ANALYTICS CARD -->
+              <div
+                class="absolute right-0 -bottom-2 z-10 w-[170px] bg-[#0c1022]/90 backdrop-blur-md border border-slate-800/80 shadow-2xl rounded-2xl p-4 text-left text-white font-sans">
+                <div class="flex items-center gap-2.5 mb-2">
+                  <img src="google-analytics.svg" alt="Google Analytics Logo" class="w-5 h-5 object-contain">
+                  <span class="text-[11px] font-bold tracking-widest text-slate-300 uppercase">ANALYTICS</span>
+                </div>
+                <h4 class="text-slate-200 font-medium text-[12px] mb-2">
+                  Activation funnel
+                </h4>
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-xl font-medium tracking-tight text-white">32%</span>
+                  <span class="text-[10px] text-slate-400 leading-snug max-w-[120px]">
+                    Drop-off at template step
+                  </span>
+                </div>
+                <div class="relative w-full h-12 bg-[#131932] rounded-xl overflow-hidden mb-2 flex items-end">
+                  <svg class="w-full h-full" viewBox="0 0 200 60" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.5"></stop>
+                        <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.0"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d="M 0,40 Q 15,40 25,25 T 50,35 T 75,45 T 100,30 T 125,40 T 150,20 T 175,38 L 200,38 L 200,60 L 0,60 Z"
+                      fill="url(#chartGradient)"></path>
+                    <path d="M 0,40 Q 15,40 25,25 T 50,35 T 75,45 T 100,30 T 125,40 T 150,20 T 175,38 L 200,38"
+                      fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"></path>
+                  </svg>
+                </div>
+                <div class="text-[10px] text-slate-400">
+                  May 1 – May 10, 2025
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="bg-white py-16 lg:py-20 relative overflow-hidden">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <!-- Subtle Right-side Background Glow that leaks softly to the left -->
+
+        <div class="absolute top-0 right-0 left-0 mx-auto w-[80%] h-full pointer-events-none z-10">
+          <!-- Top Right Deep Indigo/Purple Glow -->
+          <div
+            class="absolute -right-10 w-[1000px] h-[1000px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-indigo-200/40 from-0% via-purple-200/35 via-85% to-transparent to-100% blur-[300px]">
+          </div>
+          <!-- Bottom Left Deep Indigo/Purple Glow -->
+          <div
+            class="absolute  hidden lg:block -bottom-60 -left-60 w-[600px] h-[500px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-indigo-200/40 from-0% via-purple-200/35 via-85% to-transparent to-100% blur-[80px]">
+          </div>
+          <!-- Bottom Right Peach/Pinkish Glow -->
+          <div
+            class="absolute -bottom-60 -right-60 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-orange-200/35 via-rose-100/30 to-transparent blur-[100px]">
+          </div>
+        </div>
+
+
+        <!-- Outer Grid Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 items-start">
+
+          <!-- ========================================== -->
+          <!-- LEFT COLUMN: Content & Feature Highlights   -->
+          <!-- ========================================== -->
+          <div class="lg:col-span-4 flex flex-col max-w-[320px] space-y-8  z-10">
+
+            <!-- Section Badge -->
+            <div class="inline-flex items-center rounded-full bg-[#F0EEFF] pr-4 shadow-2xs w-fit">
+              <div
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-[#E0D7FF] ring-2 ring-white text-xs font-bold text-brand-700 shadow-2xs">
+                03
+              </div>
+              <span class="ml-3 text-xs font-bold text-brand-700 tracking-wider uppercase">TIMELINE</span>
+            </div>
+
+            <!-- Headline -->
+            <h2 class="text-4xl sm:text-[42px]/[1.2] font-bold text-slate-900 tracking-tight">
+              Follow the story <br class="hidden sm:inline">
+              behind <span class="text-brand-600">every decision.</span>
+            </h2>
+
+            <!-- Paragraph -->
+            <p class="text-slate-600 text-base leading-relaxed">
+              TeamFlow keeps a living timeline of how decisions evolve—from the first idea to measurable impact—so
+              your
+              team never loses the why.
+            </p>
+
+            <!-- Feature Points List -->
+            <div class="space-y-6 pt-2 max-w-[300px]">
+              <!-- Item 1 -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-11 h-11 rounded-2xl bg-brand-50 flex items-center justify-center shrink-0 border border-brand-100/60 shadow-sm">
+                  <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-slate-900 font-bold text-[15px] mb-0.5">Complete context over time</h3>
+                  <p class="text-slate-500 text-sm leading-relaxed">
+                    See every step, change, and contributor along the way.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-11 h-11 rounded-2xl bg-brand-50 flex items-center justify-center shrink-0 border border-brand-100/60 shadow-sm">
+                  <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-slate-900 font-bold text-[15px] mb-0.5">Never lose the why</h3>
+                  <p class="text-slate-500 text-sm leading-relaxed">
+                    Understand how decisions were made, not just what was decided.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-11 h-11 rounded-2xl bg-brand-50 flex items-center justify-center shrink-0 border border-brand-100/60 shadow-sm">
+                  <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-slate-900 font-bold text-[15px] mb-0.5">Measure what matters</h3>
+                  <p class="text-slate-500 text-sm leading-relaxed">
+                    Connect outcomes back to the decisions that drove them.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Bottom Banner Box -->
+            <div
+              class="relative overflow-hidden max-w- rounded-3xl bg-gradient-to-br from-white via-[#F5F2FF] to-[#EAE4FF] p-6 sm:p-7 border border-brand-100/80 shadow-xl shadow-brand-500/5 mt-4">
+              <div class="relative z-10 space-y-4 max-w-[240px]">
+                <h4 class="text-slate-900 font-bold text-[16px]">From start to impact.</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                  Every decision has a journey. We help you see it clearly.
+                </p>
+                <a href="#"
+                  class="inline-flex items-center gap-1.5 text-brand-600 font-bold text-sm hover:text-brand-700 transition-colors pt-6">
+                  <span>Explore an example</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Background Decorative Mountain Graphic -->
+              <div class="absolute -bottom-2 -right-2 w-44 h-32 pointer-events-none opacity-80">
+                <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                  <path d="M40 140 C80 90, 120 110, 200 30 L200 140 Z" fill="url(#grad1)" opacity="0.6"></path>
+                  <path d="M0 140 C60 100, 110 120, 200 60 L200 140 Z" fill="url(#grad2)" opacity="0.8"></path>
+                  <path d="M10 140 C70 80, 130 95, 200 45 L200 140 Z" fill="url(#grad3)"></path>
+                  <circle cx="160" cy="35" r="3" fill="#6E44FF"></circle>
+                  <path d="M160 35 L160 20 M160 20 L172 24 L160 28" stroke="#6E44FF" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+                  <defs>
+                    <linearGradient id="grad1" x1="0" y1="0" x2="200" y2="140" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#C5B8FF"></stop>
+                      <stop offset="1" stop-color="#6E44FF"></stop>
+                    </linearGradient>
+                    <linearGradient id="grad2" x1="0" y1="0" x2="200" y2="140" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#A792FF"></stop>
+                      <stop offset="1" stop-color="#5B32F0"></stop>
+                    </linearGradient>
+                    <linearGradient id="grad3" x1="0" y1="0" x2="200" y2="140" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#8B5CF6"></stop>
+                      <stop offset="1" stop-color="#3B12B3"></stop>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- ========================================== -->
+          <!-- RIGHT COLUMN: Interactive Winding Timeline -->
+          <!-- ========================================== -->
+          <div class="lg:col-span-8 relative w-full">
+
+            <!-- --------------------------------------- -->
+            <!-- DESKTOP SERPENTINE VIEW (Hidden on Mobile) -->
+            <!-- --------------------------------------- -->
+            <!-- Container scales fluidly based on available width; height adjusts automatically -->
+            <!-- AFTER (Fixes height dynamically based on aspect ratio) -->
+            <div class="hidden lg:block relative w-full aspect-[760/860] max-w-[800px] mx-auto">
+              <!-- SVG Connector Overlay -->
+              <div
+                class="absolute top-0 inset-0 m-auto -translate-x-[13.5%] w-[93%] h-[93%] flex items-start justify-center pointer-events-none">
+                <img src="timeline-connector.svg" alt="Timeline Connector"
+                  class="w-full h-full object-contain pointer-events-none">
+              </div>
+
+              <!-- NODE 1: IDEA PROPOSED -->
+              <div
+                class="absolute top-[1%] left-[12%] z-20 w-[67px] h-[67px] rounded-3xl bg-white shadow-lg shadow-purple-500/10 border border-slate-100 flex items-center justify-center text-brand-600">
+                <!-- lightbuld svg image file-->
+                <img src="lightbulb.svg" alt="Lightbulb Icon" class="w-7 h-7">
+              </div>
+              <div
+                class="absolute -top-[0.8%] left-[24%] z-10 w-[280px] timeline-card bg-white rounded-xl px-6 py-5 shadow-xl shadow-slate-200/50 border border-slate-100/90">
+                <span class="text-[11px] font-bold text-brand-600 tracking-wider uppercase block mb-1.5">IDEA
+                  PROPOSED</span>
+                <h4 class="text-slate-900 font-bold text-[16px] mb-3.5">Improve onboarding flow</h4>
+                <div class="flex items-center gap-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=100&amp;q=80"
+                    alt="Sarah Chen" class="w-5 h-5 rounded-full object-cover">
+                  <div class="flex items-center gap-1.5 text-xs">
+                    <span class="font-bold text-slate-700">Sarah Chen</span>
+                  </div>
+                </div>
+                <div class=" flex items-center gap-2 text-xs text-slate-500 mt-1.5"><span>Apr 28,
+                    2025</span><span>•</span><span>9:12 AM</span></div>
+              </div>
+
+              <!-- NODE 2: INITIAL RESEARCH -->
+              <div
+                class="absolute top-[17%] right-[38%] z-20 w-[67px] h-[67px] rounded-3xl bg-white shadow-lg shadow-purple-500/10 border border-slate-100 flex items-center justify-center text-brand-600">
+                <svg class="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                  </path>
+                </svg>
+              </div>
+              <div
+                class="absolute top-[15%] right-[2%] z-10 w-[265px] timeline-card bg-white rounded-xl py-4 px-6 shadow-xl shadow-slate-200/50 border border-slate-100/90">
+                <span class="text-[11px] font-bold text-brand-600 tracking-wider uppercase block mb-1.5">INITIAL
+                  RESEARCH</span>
+                <h4 class="text-slate-900 font-bold text-[16px] mb-5">User pain points identified</h4>
+                <div class="flex items-center font-[600] text-xs gap-6 text-slate-700">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-blue-500 fill-current" viewBox="0 0 24 24">
+                      <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z">
+                      </path>
+                    </svg>
+                    <span>Research doc</span>
+                  </div>
+                  <span class="text-[11px] bg-slate-100 px-2 py-[3px] rounded-full font-bold text-slate-600">+
+                    12</span>
+                </div>
+
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-3"><span>Apr 29,
+                    2025</span><span>•</span><span>2:40 PM</span></div>
+              </div>
+
+              <!-- NODE 3: CUSTOMER INTERVIEWS -->
+              <div
+                class="absolute top-[32%] left-[44%] z-20 w-[67px] h-[67px] rounded-3xl bg-white shadow-lg shadow-purple-500/10 border border-slate-100 flex items-center justify-center text-emerald-500">
+                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                  </path>
+                </svg>
+              </div>
+              <div
+                class="absolute top-[30%] left-[8.5%] z-10 w-[265px] timeline-card bg-white rounded-xl py-5 px-6 shadow-xl shadow-slate-200/50 border border-slate-100/90">
+                <span class="text-[11px] font-bold text-brand-600 tracking-wider uppercase block mb-1.5">CUSTOMER
+                  INTERVIEWS</span>
+                <h4 class="text-slate-900 font-bold text-[16px] mb-5">5 user interviews completed</h4>
+                <div class="flex items-center gap-6 font-[600] text-xs text-slate-700">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-[#27a25d] fill-current" viewBox="0 0 24 24">
+                      <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z">
+                      </path>
+                    </svg>
+                    <span>Interview notes</span>
+                  </div>
+                  <span class="text-[11px] bg-slate-100 px-2 py-[2px] rounded-full font-bold">+ 5</span>
+                </div>
+
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-3"><span>May 1,
+                    2025</span><span>•</span><span>11:30 PM</span></div>
+              </div>
+
+              <!-- NODE 4: DESIGN EXPLORATION -->
+              <div
+                class="absolute top-[46%] right-[37%] z-20 w-[67px] h-[67px] rounded-3xl bg-white shadow-lg shadow-purple-500/10 border border-slate-100 flex items-center justify-center text-brand-600">
+                <svg class="w-7 h-7 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                  </path>
+                </svg>
+              </div>
+              <div
+                class="absolute top-[44%] right-[7.5%] z-10 w-[220px] timeline-card bg-white rounded-xl py-4 px-6 shadow-xl shadow-slate-200/50 border border-slate-100/90">
+                <span class="text-[11px] font-bold text-brand-600 tracking-wider uppercase block mb-1.5">DESIGN
+                  EXPLORATION</span>
+                <h4 class="text-slate-900 font-bold text-[16px] mb-5">Onboarding flow v3</h4>
+                <div class="flex items-center gap-6 text-xs font-[600] text-slate-700">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-4 h-4" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z"
+                        fill="#0ACF83"></path>
+                      <path
+                        d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z"
+                        fill="#1ABCFE"></path>
+                      <path d="M0 9.5C0 4.2533 4.2533 0 9.5 0H19V19H9.5C4.2533 19 0 14.7467 0 9.5Z" fill="#F24E1E">
+                      </path>
+                      <path d="M19 0H28.5C33.7467 0 38 4.2533 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z"
+                        fill="#FF7262"></path>
+                      <path d="M0 28.5C0 23.2533 4.2533 19 9.5 19H19V38H9.5C4.2533 38 0 33.7467 0 28.5Z" fill="#A259FF">
+                      </path>
+                    </svg>
+                    <span>Figma file</span>
+                  </div>
+                  <span class="text-[11px] bg-slate-100 px-2 py-[3px] rounded-full font-bold text-slate-600">v3</span>
+                </div>
+
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-3"><span>May 3,
+                    2025</span><span>•</span><span>4:15 PM</span></div>
+              </div>
+
+              <!-- NODE 5: ENGINEERING REVIEW -->
+              <div
+                class="absolute top-[62%] left-[42%] z-20 w-[67px] h-[67px] rounded-3xl bg-white shadow-lg shadow-purple-500/10 border border-slate-100 flex items-center justify-center text-blue-600 font-bold">
+                <svg class="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4">
+                  </path>
+                </svg>
+              </div>
+              <div
+                class="absolute top-[59%] left-[10%] z-10 w-[235px] timeline-card bg-white rounded-xl py-4 px-6 shadow-xl shadow-slate-200/50 border border-slate-100/90">
+                <span class="text-[11px] font-bold text-brand-600 tracking-wider uppercase block mb-1.5">ENGINEERING
+                  REVIEW</span>
+                <h4 class="text-slate-900 font-bold text-[16px] mb-5">Reviewed by eng team</h4>
+                <div class="flex items-center justify-between font-[600] text-xs text-slate-700">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z">
+                      </path>
+                    </svg>
+                    <span>PR #428</span>
+                  </div>
+                  <span
+                    class="text-[11px] font-semibold text-purple-700 bg-purple-100/70 px-2 py-0.5 rounded-full">Merged</span>
+                </div>
+
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-3"><span>May 6,
+                    2025</span><span>•</span><span>10:20 AM</span></div>
+              </div>
+
+              <!-- NODE 6: DECISION MADE -->
+              <div
+                class="absolute top-[75%] left-[53.3%] z-20 w-[67px] h-[67px] rounded-3xl bg-white shadow-lg shadow-emerald-500/20 flex items-center justify-center text-[#27a25d]">
+                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div
+                class="absolute top-[72%] right-[3%] z-10 w-[255px] timeline-card bg-[#F0FDF4]/90 border border-emerald-100/80 rounded-2xl py-5 px-6 shadow-xl shadow-emerald-900/5">
+                <span class="text-[11px] font-bold text-emerald-600 tracking-wider uppercase block mb-1.5">DECISION
+                  MADE</span>
+                <h4 class="text-slate-900 font-bold text-[16px] mb-5">Approved &amp; ready to build</h4>
+                <div class="flex items-center gap-4">
+                  <div class="flex -space-x-0 overflow-hidden">
+                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=80&amp;q=80"
+                      alt="">
+                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=80&amp;q=80"
+                      alt="">
+                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=80&amp;q=80"
+                      alt="">
+                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=80&amp;q=80"
+                      alt="">
+                  </div>
+                  <span
+                    class="text-[11px] bg-[#F0FDF4]/100 px-2 py-[3px] rounded-full font-bold text-slate-600">+3</span>
+                </div>
+
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-3"><span>May 7,
+                    2025</span><span>•</span><span>3:50 PM</span></div>
+              </div>
+
+              <!-- NODE 7: IMPACT MEASURED -->
+              <div
+                class="absolute bottom-[3%] left-[45%] z-20 w-[67px] h-[67px] rounded-3xl bg-white shadow-lg shadow-purple-500/10 border border-slate-100 flex items-center justify-center">
+                <img src="google-analytics.svg" alt="Chart Icon" class="w-7 h-7">
+              </div>
+              <div
+                class="absolute -bottom-[5%] left-[10%] z-10 w-[260px] timeline-card bg-white rounded-xl py-5 px-6 shadow-xl shadow-slate-200/50 border border-slate-100/90">
+                <span class="text-[11px] font-bold text-brand-600 tracking-wider uppercase block mb-1.5">IMPACT
+                  MEASURED</span>
+                <h4 class="text-slate-900 font-bold text-[16px] mb-5">Activation rate increased</h4>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-2xl font-bold text-[#27a25d] tracking-tight">+18%</span>
+                  <svg class="w-24 h-8 text-brand-600 stroke-current" viewBox="0 0 100 30" stroke-width="2" fill="none">
+                    <path d="M 0 26 Q 15 22, 25 21 T 40 10 T 55 18 T 75 16 T 100 3 L 100 30 L 0 30 Z"
+                      class="fill-brand-100" stroke="none"></path>
+                    <path d="M 0 26 Q 15 22, 25 21 T 40 10 T 55 18 T 75 16 T 100 3" stroke-linecap="round"></path>
+                  </svg>
+
+                </div>
+
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-3"><span>May 24,
+                    2025</span><span>•</span><span>30 days after launch</span></div>
+              </div>
+
+            </div>
+
+
+            <!-- --------------------------------------- -->
+            <!-- MOBILE VERTICAL RAIL VIEW (Shown on Mobile) -->
+            <!-- --------------------------------------- -->
+            <div class="block lg:hidden relative pl-6 space-y-6 pt-4">
+
+              <!-- Vertical Connecting Rail Line -->
+              <div
+                class="absolute left-6 top-6 bottom-16 w-0.5 bg-gradient-to-b from-brand-200 via-brand-500 to-emerald-400 -translate-x-1/2">
+              </div>
+
+              <!-- Mobile Item 1 -->
+              <div class="relative pl-8">
+                <div
+                  class="absolute left-0 top-1 -translate-x-1/2 w-9 h-9 rounded-xl bg-white border border-brand-200 shadow-md flex items-center justify-center text-brand-600">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-lg shadow-slate-200/50 border border-slate-100">
+                  <span class="text-[10px] font-extrabold text-brand-600 tracking-wider uppercase block mb-1">IDEA
+                    PROPOSED</span>
+                  <h4 class="text-slate-900 font-bold text-sm mb-2">Improve onboarding flow</h4>
+                  <div class="flex items-center gap-2">
+                    <img
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=100&amp;q=80"
+                      alt="Sarah Chen" class="w-5 h-5 rounded-full object-cover">
+                    <span class="text-xs text-slate-700 font-medium">Sarah Chen</span>
+                    <span class="text-[10px] text-slate-400 ml-auto">Apr 28, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Item 2 -->
+              <div class="relative pl-8">
+                <div
+                  class="absolute left-0 top-1 -translate-x-1/2 w-9 h-9 rounded-xl bg-white border border-brand-200 shadow-md flex items-center justify-center text-brand-600">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-lg shadow-slate-200/50 border border-slate-100">
+                  <span class="text-[10px] font-extrabold text-brand-600 tracking-wider uppercase block mb-1">INITIAL
+                    RESEARCH</span>
+                  <h4 class="text-slate-900 font-bold text-sm mb-2">User pain points identified</h4>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                      <svg class="w-3.5 h-3.5 text-blue-500 fill-current" viewBox="0 0 24 24">
+                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z">
+                        </path>
+                      </svg>
+                      <span>Research doc</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400">Apr 29, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Item 3 -->
+              <div class="relative pl-8">
+                <div
+                  class="absolute left-0 top-1 -translate-x-1/2 w-9 h-9 rounded-xl bg-white border border-brand-200 shadow-md flex items-center justify-center text-emerald-500">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-lg shadow-slate-200/50 border border-slate-100">
+                  <span class="text-[10px] font-extrabold text-brand-600 tracking-wider uppercase block mb-1">CUSTOMER
+                    INTERVIEWS</span>
+                  <h4 class="text-slate-900 font-bold text-sm mb-2">5 user interviews completed</h4>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                      <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                      </svg>
+                      <span>Interview notes</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400">May 1, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Item 4 -->
+              <div class="relative pl-8">
+                <div
+                  class="absolute left-0 top-1 -translate-x-1/2 w-9 h-9 rounded-xl bg-white border border-brand-200 shadow-md flex items-center justify-center text-brand-600">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-lg shadow-slate-200/50 border border-slate-100">
+                  <span class="text-[10px] font-extrabold text-brand-600 tracking-wider uppercase block mb-1">DESIGN
+                    EXPLORATION</span>
+                  <h4 class="text-slate-900 font-bold text-sm mb-2">Onboarding flow v3</h4>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z"
+                          fill="#0ACF83"></path>
+                        <path
+                          d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z"
+                          fill="#1ABCFE"></path>
+                        <path d="M0 9.5C0 4.2533 4.2533 0 9.5 0H19V19H9.5C4.2533 19 0 14.7467 0 9.5Z" fill="#F24E1E">
+                        </path>
+                        <path d="M19 0H28.5C33.7467 0 38 4.2533 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z"
+                          fill="#FF7262"></path>
+                        <path d="M0 28.5C0 23.2533 4.2533 19 9.5 19H19V38H9.5C4.2533 38 0 33.7467 0 28.5Z"
+                          fill="#A259FF"></path>
+                      </svg>
+                      <span>Figma file v3</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400">May 3, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Item 5 -->
+              <div class="relative pl-8">
+                <div
+                  class="absolute left-0 top-1 -translate-x-1/2 w-9 h-9 rounded-xl bg-white border border-brand-200 shadow-md flex items-center justify-center text-blue-600">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4">
+                    </path>
+                  </svg>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-lg shadow-slate-200/50 border border-slate-100">
+                  <span
+                    class="text-[10px] font-extrabold text-brand-600 tracking-wider uppercase block mb-1">ENGINEERING
+                    REVIEW</span>
+                  <h4 class="text-slate-900 font-bold text-sm mb-2">Reviewed by eng team</h4>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                      <svg class="w-3.5 h-3.5 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z">
+                        </path>
+                      </svg>
+                      <span>PR #428</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400">May 6, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Item 6 (Decision Made) -->
+              <div class="relative pl-8">
+                <div
+                  class="absolute left-0 top-1 -translate-x-1/2 w-9 h-9 rounded-xl bg-emerald-500 shadow-md flex items-center justify-center text-white">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div class="bg-[#F0FDF4] rounded-2xl p-4 shadow-lg shadow-emerald-900/5 border border-emerald-200">
+                  <span class="text-[10px] font-extrabold text-emerald-600 tracking-wider uppercase block mb-1">DECISION
+                    MADE</span>
+                  <h4 class="text-slate-900 font-bold text-sm mb-2">Approved &amp; ready to build</h4>
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-1.5">
+                      <img class="inline-block h-5 w-5 rounded-full ring-2 ring-white object-cover"
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=80&amp;q=80"
+                        alt="">
+                      <img class="inline-block h-5 w-5 rounded-full ring-2 ring-white object-cover"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=80&amp;q=80"
+                        alt="">
+                      <img class="inline-block h-5 w-5 rounded-full ring-2 ring-white object-cover"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=80&amp;q=80"
+                        alt="">
+                    </div>
+                    <span class="text-[10px] text-slate-500">May 7, 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Item 7 -->
+              <div class="relative pl-8">
+                <div
+                  class="absolute left-0 top-1 -translate-x-1/2 w-9 h-9 rounded-xl bg-white border border-slate-200 shadow-md flex items-center justify-center">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="14" width="4" h="7" rx="1" fill="#F9AB00"></rect>
+                    <rect x="10" y="8" width="4" h="13" rx="1" fill="#E37400"></rect>
+                    <rect x="17" y="3" width="4" h="18" rx="1" fill="#EA4335"></rect>
+                  </svg>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-lg shadow-slate-200/50 border border-slate-100">
+                  <span class="text-[10px] font-extrabold text-brand-600 tracking-wider uppercase block mb-1">IMPACT
+                    MEASURED</span>
+                  <h4 class="text-slate-900 font-bold text-sm mb-1">Activation rate increased</h4>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-black text-emerald-500">+18%</span>
+                    <span class="text-[10px] text-slate-400">30 days after launch</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Bottom Link -->
+              <div class="pt-4 text-center">
+                <a href="#"
+                  class="inline-flex items-center gap-1.5 text-brand-600 font-bold text-xs bg-white border border-brand-100 px-4 py-2.5 rounded-full shadow-sm hover:bg-brand-50 transition-colors">
+                  <span>See full decision timeline</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- DEMO VIDEO MODAL (Interactive Enhancement) -->
+  <div id="demo-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md transition-opacity">
+    <div class="bg-slate-900 rounded-2xl max-w-3xl w-full border border-slate-800 shadow-2xl overflow-hidden relative">
+      <div class="flex items-center justify-between p-4 border-b border-slate-800">
+        <h3 class="text-white font-bold text-base flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+          TeamFlow Interactive Walkthrough
+        </h3>
+        <button id="close-demo-btn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="aspect-video bg-black flex items-center justify-center relative">
+        <div class="text-center p-8">
+          <div
+            class="w-16 h-16 rounded-full bg-brand-600/20 text-brand-500 flex items-center justify-center mx-auto mb-4 border border-brand-500/30">
+            <svg class="w-8 h-8 fill-current ml-1" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-1">Interactive Product Demo</h4>
+          <p class="text-slate-400 text-xs max-w-sm mx-auto">This modal represents the video demo overlay triggering
+            from the primary hero button.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+ document.addEventListener('DOMContentLoaded', () => {
+  const accordionContainer = document.getElementById('decisions-accordion');
+  if (!accordionContainer) return;
+
+  const accordionItems = Array.from(accordionContainer.querySelectorAll('[data-accordion-item]'));
+  const dashboardImages = document.querySelectorAll('.dashboard-window img');
+
+  const DURATION = 8000; // Progress line fill time in ms
+  let currentIndex = 0;
+  let timerId = null;
+
+  function activateItem(index) {
+    currentIndex = index;
+
+    // 1. Update Accordion Items & Progress Line
+    accordionItems.forEach((item, i) => {
+      const progressBar = item.querySelector('.accordion-progress-bar');
+      const title = item.querySelector('.accordion-title');
+
+      if (i === index) {
+        item.classList.add('active');
+        if (title) {
+          title.className = 'accordion-title text-xl font-semibold text-slate-900 transition-colors';
+        }
+
+        if (progressBar) {
+          progressBar.style.transition = 'none';
+          progressBar.style.height = '0%';
+          void progressBar.offsetHeight; // Force reflow
+          progressBar.style.transition = `height ${DURATION}ms linear`;
+          progressBar.style.height = '100%';
+        }
+      } else {
+        item.classList.remove('active');
+        if (title) {
+          title.className = 'accordion-title text-xl font-semibold text-slate-500 group-hover:text-slate-900 transition-colors';
+        }
+
+        if (progressBar) {
+          progressBar.style.transition = 'none';
+          progressBar.style.height = '0%';
+        }
+      }
+    });
+
+    // 2. Smoothly cross-fade images without DOM reload or layout shifts
+    dashboardImages.forEach((img, i) => {
+      if (i === index) {
+        img.classList.add('active');
+      } else {
+        img.classList.remove('active');
+      }
+    });
+
+    // 3. Reset auto-advance timer
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      const nextIndex = (currentIndex + 1) % accordionItems.length;
+      activateItem(nextIndex);
+    }, DURATION);
+  }
+
+  // Handle manual item clicks
+  accordionItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      activateItem(index);
+    });
+  });
+
+  // Start rotation
+  activateItem(0);
+});
+
+    // Interactive navigation and responsive menu logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('main-header');
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileNavigation = document.getElementById('mobile-navigation');
+
+      // Hamburger icon animation selectors
+      const burgerTop = document.getElementById('hamburger-top');
+      const burgerMid = document.getElementById('hamburger-mid');
+      const burgerBot = document.getElementById('hamburger-bot');
+
+      let isMenuOpen = false;
+
+      // Toggle Mobile Menu Open / Close
+      mobileMenuToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        mobileMenuToggle.setAttribute('aria-expanded', isMenuOpen);
+
+        if (isMenuOpen) {
+          mobileNavigation.classList.add('mobile-menu-active');
+
+          // Transform hamburger to X smoothly
+          burgerTop.style.transform = 'rotate(45deg)';
+          burgerTop.style.top = '11px';
+          burgerMid.style.opacity = '0';
+          burgerBot.style.transform = 'rotate(-45deg)';
+          burgerBot.style.top = '11px';
+          header.classList.add('bg-white');
+        } else {
+          mobileNavigation.classList.remove('mobile-menu-active');
+
+          // Reset hamburger bars
+          burgerTop.style.transform = 'none';
+          burgerTop.style.top = '3px';
+          burgerMid.style.opacity = '1';
+          burgerBot.style.transform = 'none';
+          burgerBot.style.top = '19px';
+
+          if (window.scrollY <= 20) {
+            header.classList.remove('bg-white');
+          }
+        }
+      });
+
+      // Smooth backdrop styling on scroll activation
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          header.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-nav-shadow');
+          header.classList.remove('bg-transparent');
+        } else {
+          if (!isMenuOpen) {
+            header.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-nav-shadow');
+            header.classList.add('bg-transparent');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
